@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A2318;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0F2E1E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#071A12;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Accent glow -->
+    <radialGradient id="glowLeft" cx="20%" cy="70%" r="50%">
+      <stop offset="0%" style="stop-color:#1A6B4A;stop-opacity:0.35" />
+      <stop offset="100%" style="stop-color:#1A6B4A;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="glowRight" cx="85%" cy="25%" r="40%">
+      <stop offset="0%" style="stop-color:#D4A843;stop-opacity:0.12" />
+      <stop offset="100%" style="stop-color:#D4A843;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Circle gradient for icon -->
+    <radialGradient id="iconGrad" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" style="stop-color:#2A8A5E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A6B4A;stop-opacity:1" />
+    </radialGradient>
+
+    <filter id="softBlur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+  <rect width="1200" height="630" fill="url(#glowLeft)" />
+  <rect width="1200" height="630" fill="url(#glowRight)" />
+
+  <!-- Grid pattern -->
+  <g opacity="0.07" stroke="#4ADE80" stroke-width="1">
+    <!-- Vertical lines -->
+    <line x1="100" y1="0" x2="100" y2="630"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="500" y1="0" x2="500" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="700" y1="0" x2="700" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+    <line x1="1100" y1="0" x2="1100" y2="630"/>
+    <!-- Horizontal lines -->
+    <line x1="0" y1="90" x2="1200" y2="90"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+  </g>
+
+  <!-- Decorative circles -->
+  <circle cx="980" cy="130" r="180" fill="none" stroke="#1A6B4A" stroke-width="1" opacity="0.2"/>
+  <circle cx="980" cy="130" r="130" fill="none" stroke="#1A6B4A" stroke-width="1" opacity="0.15"/>
+  <circle cx="980" cy="130" r="80" fill="none" stroke="#2A8A5E" stroke-width="1.5" opacity="0.25"/>
+
+  <circle cx="120" cy="520" r="120" fill="none" stroke="#1A6B4A" stroke-width="1" opacity="0.15"/>
+  <circle cx="120" cy="520" r="70" fill="none" stroke="#1A6B4A" stroke-width="1" opacity="0.1"/>
+
+  <!-- Top-left accent bar -->
+  <rect x="80" y="80" width="4" height="60" rx="2" fill="#1A6B4A" opacity="0.8"/>
+  <rect x="92" y="80" width="4" height="40" rx="2" fill="#1A6B4A" opacity="0.4"/>
+
+  <!-- Icon circle -->
+  <circle cx="940" cy="340" r="110" fill="url(#iconGrad)" opacity="0.15"/>
+  <circle cx="940" cy="340" r="90" fill="url(#iconGrad)" opacity="0.12"/>
+
+  <!-- Code icon / bracket illustration -->
+  <g transform="translate(880, 280)" opacity="0.9">
+    <!-- Left bracket -->
+    <path d="M40 0 L10 30 L40 60" stroke="#4ADE80" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Right bracket -->
+    <path d="M80 0 L110 30 L80 60" stroke="#4ADE80" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Slash -->
+    <line x1="65" y1="5" x2="50" y2="55" stroke="#D4A843" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Floating code snippets decoration -->
+  <g opacity="0.18" font-family="monospace" font-size="13" fill="#4ADE80">
+    <text x="820" y="200">const dev = {</text>
+    <text x="835" y="218">name: 'Andika',</text>
+    <text x="835" y="236">role: 'Frontend',</text>
+    <text x="820" y="254">};</text>
+  </g>
+
+  <!-- Dot accent -->
+  <circle cx="80" cy="315" r="5" fill="#1A6B4A"/>
+  <circle cx="80" cy="315" r="10" fill="#1A6B4A" opacity="0.2"/>
+  <circle cx="80" cy="315" r="16" fill="#1A6B4A" opacity="0.1"/>
+
+  <!-- Main content area -->
+  <!-- Available badge -->
+  <rect x="80" y="170" width="210" height="34" rx="17" fill="#1A6B4A" opacity="0.25"/>
+  <rect x="80" y="170" width="210" height="34" rx="17" fill="none" stroke="#1A6B4A" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="104" cy="187" r="5" fill="#4ADE80"/>
+  <text x="118" y="192" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="600" fill="#4ADE80" letter-spacing="1">AVAILABLE FOR HIRE</text>
+
+  <!-- Name -->
+  <text x="80" y="295" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#FFFFFF" letter-spacing="-2">Andika</text>
+  <text x="80" y="375" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#FFFFFF" letter-spacing="-2">Dwi <tspan fill="#1FB86A">Putra</tspan></text>
+
+  <!-- Divider line -->
+  <rect x="80" y="400" width="500" height="2" rx="1" fill="url(#bgGrad)" opacity="0"/>
+  <line x1="80" y1="408" x2="580" y2="408" stroke="#1A6B4A" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Role title -->
+  <text x="80" y="448" font-family="'DM Sans', Arial, sans-serif" font-size="26" font-weight="300" fill="#A8D5BC" letter-spacing="3">FRONTEND WEB DEVELOPER</text>
+
+  <!-- Tech stack pills -->
+  <g font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="500">
+    <!-- React -->
+    <rect x="80" y="478" width="76" height="28" rx="14" fill="#1A6B4A" opacity="0.3"/>
+    <rect x="80" y="478" width="76" height="28" rx="14" fill="none" stroke="#2A8A5E" stroke-width="1"/>
+    <text x="118" y="497" text-anchor="middle" fill="#4ADE80">React</text>
+
+    <!-- Next.js -->
+    <rect x="168" y="478" width="84" height="28" rx="14" fill="#1A6B4A" opacity="0.3"/>
+    <rect x="168" y="478" width="84" height="28" rx="14" fill="none" stroke="#2A8A5E" stroke-width="1"/>
+    <text x="210" y="497" text-anchor="middle" fill="#4ADE80">Next.js</text>
+
+    <!-- TypeScript -->
+    <rect x="264" y="478" width="106" height="28" rx="14" fill="#1A6B4A" opacity="0.3"/>
+    <rect x="264" y="478" width="106" height="28" rx="14" fill="none" stroke="#2A8A5E" stroke-width="1"/>
+    <text x="317" y="497" text-anchor="middle" fill="#4ADE80">TypeScript</text>
+
+    <!-- Tailwind -->
+    <rect x="382" y="478" width="94" height="28" rx="14" fill="#1A6B4A" opacity="0.3"/>
+    <rect x="382" y="478" width="94" height="28" rx="14" fill="none" stroke="#2A8A5E" stroke-width="1"/>
+    <text x="429" y="497" text-anchor="middle" fill="#4ADE80">Tailwind</text>
+  </g>
+
+  <!-- Bottom domain -->
+  <text x="80" y="576" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="400" fill="#4A8A6A" letter-spacing="1">🌐  dikshrly.site</text>
+
+  <!-- Bottom right watermark area -->
+  <text x="1120" y="576" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#1A6B4A" text-anchor="middle" opacity="0.6">ADP<tspan fill="#D4A843">.</tspan></text>
+
+  <!-- Corner accent top right -->
+  <line x1="1100" y1="80" x2="1160" y2="80" stroke="#1A6B4A" stroke-width="2" opacity="0.5"/>
+  <line x1="1160" y1="80" x2="1160" y2="140" stroke="#1A6B4A" stroke-width="2" opacity="0.5"/>
+
+  <!-- Corner accent bottom left -->
+  <line x1="40" y1="550" x2="40" y2="590" stroke="#1A6B4A" stroke-width="2" opacity="0.5"/>
+  <line x1="40" y1="590" x2="80" y2="590" stroke="#1A6B4A" stroke-width="2" opacity="0.5"/>
+</svg>
