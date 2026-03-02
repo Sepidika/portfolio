@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zara Visuals — Graphic Designer Portfolio</title>
+  <meta name="description" content="Graphic designer spesialis branding, ilustrasi, dan identitas visual yang berani dan berkesan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:     #f0ebe2;
+      --ink:    #111111;
+      --soft:   #666660;
+      --red:    #e8362a;
+      --yellow: #f5c518;
+      --blue:   #1a3fff;
+      --green:  #00b87a;
+      --white:  #ffffff;
+      --b: 2px solid #111111;
+      --ff-d: 'Bebas Neue', sans-serif;
+      --ff-b: 'Plus Jakarta Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-b); background: var(--bg); color: var(--ink); overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--ink); }
+
+    /* ── TICKER ── */
+    .ticker { background: var(--ink); height: 38px; overflow: hidden; display: flex; align-items: center; }
+    .ticker-track { display: flex; white-space: nowrap; animation: tick 22s linear infinite; }
+    .ticker-item { font-family: var(--ff-d); font-size: 14px; letter-spacing: .1em; color: var(--yellow); padding: 0 28px; flex-shrink: 0; }
+    .ticker-item::after { content: ' ✦ '; color: var(--red); margin-left: 28px; }
+    @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      height: 60px; background: var(--bg);
+      border-bottom: var(--b);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+    }
+    .nav-logo { font-family: var(--ff-d); font-size: 24px; letter-spacing: .06em; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); text-decoration: none; padding: 6px 14px; transition: all .15s; }
+    .nav-links a:hover { color: var(--ink); background: var(--yellow); }
+    .nav-cta { font-family: var(--ff-d); font-size: 16px; letter-spacing: .08em; color: var(--white); background: var(--ink); padding: 9px 22px; text-decoration: none; transition: background .15s; }
+    .nav-cta:hover { background: var(--red); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); }
+
+    /* ── MOBILE NAV ── */
+    .mob-nav { display: none; position: fixed; top: 98px; left: 0; right: 0; bottom: 0; background: var(--yellow); z-index: 99; padding: 32px 28px; flex-direction: column; border-top: var(--b); overflow-y: auto; }
+    .mob-nav.open { display: flex; }
+    .mob-nav a { font-family: var(--ff-d); font-size: 44px; letter-spacing: .04em; color: var(--ink); text-decoration: none; border-bottom: 2px solid rgba(17,17,17,.18); padding: 12px 0; }
+
+    /* ── HERO ── */
+    #hero { display: grid; grid-template-columns: 1fr 460px; grid-template-rows: 1fr auto; min-height: calc(100vh - 98px); border-bottom: var(--b); }
+
+    .hero-a {
+      grid-column: 1; grid-row: 1;
+      border-right: var(--b); border-bottom: var(--b);
+      padding: 56px 48px 48px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      position: relative; overflow: hidden;
+    }
+    .hero-a::before {
+      content: ''; position: absolute;
+      width: 340px; height: 340px; border-radius: 50%;
+      background: var(--yellow); opacity: .5;
+      top: -100px; left: -80px; z-index: 0;
+    }
+    .hero-eyebrow {
+      position: relative; z-index: 1;
+      font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--red); display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--red); }
+    .hero-title {
+      position: relative; z-index: 1;
+      font-family: var(--ff-d);
+      font-size: clamp(72px, 9vw, 130px);
+      line-height: .88; letter-spacing: .01em; color: var(--ink);
+    }
+    .hero-title .red { color: var(--red); }
+    .hero-title .outline { -webkit-text-stroke: 3px var(--ink); color: transparent; }
+
+    .hero-b {
+      grid-column: 2; grid-row: 1 / 3;
+      position: relative; overflow: hidden;
+    }
+    .hero-b img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .6s ease; }
+    .hero-b:hover img { transform: scale(1.04); }
+    .hero-badge {
+      position: absolute; bottom: 24px; left: 24px;
+      background: var(--yellow); border: var(--b);
+      padding: 14px 18px;
+    }
+    .hero-badge p { font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 3px; }
+    .hero-badge strong { font-family: var(--ff-d); font-size: 22px; letter-spacing: .04em; }
+
+    .hero-c {
+      grid-column: 1; grid-row: 2;
+      border-right: var(--b);
+      padding: 36px 48px;
+      display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    }
+    .hero-desc { font-size: 15px; font-weight: 400; color: var(--soft); line-height: 1.75; max-width: 500px; }
+    .hero-btns { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+    .btn-red {
+      font-family: var(--ff-d); font-size: 18px; letter-spacing: .08em;
+      color: var(--white); background: var(--red); border: 2px solid var(--red);
+      padding: 12px 32px; text-decoration: none; white-space: nowrap; transition: all .2s;
+    }
+    .btn-red:hover { background: var(--ink); border-color: var(--ink); transform: translate(-3px,-3px); box-shadow: 3px 3px 0 var(--red); }
+    .btn-lnk { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--ink); padding-bottom: 2px; white-space: nowrap; transition: color .2s, border-color .2s; }
+    .btn-lnk:hover { color: var(--blue); border-color: var(--blue); }
+
+    /* ── TAGS ROW ── */
+    .tags-row { display: flex; border-bottom: var(--b); }
+    .tag-chip { flex: 1; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 14px 4px; border-right: var(--b); transition: background .2s, color .2s; cursor: default; }
+    .tag-chip:last-child { border-right: none; }
+    .tag-chip:hover { background: var(--ink); color: var(--yellow); }
+    .tag-chip.red   { background: var(--red);   color: var(--white); }
+    .tag-chip.blue  { background: var(--blue);  color: var(--white); }
+    .tag-chip.green { background: var(--green); color: var(--white); }
+
+    /* ── ABOUT ── */
+    #about { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--b); }
+    .about-l { padding: 56px 40px; border-right: var(--b); }
+    .about-l h2 { font-family: var(--ff-d); font-size: clamp(48px,6vw,80px); line-height: .9; letter-spacing: .02em; margin: 14px 0 22px; }
+    .about-l h2 span { color: var(--red); }
+    .about-l p { font-size: 15px; font-weight: 400; color: var(--soft); line-height: 1.8; margin-bottom: 12px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .chip { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 6px 14px; border: 2px solid var(--ink); background: var(--white); transition: all .15s; }
+    .chip:hover { background: var(--ink); color: var(--yellow); }
+
+    .about-r { display: grid; grid-template-rows: 1fr 1fr; }
+    .astat { padding: 40px; border-bottom: var(--b); transition: background .25s; }
+    .astat:last-child { border-bottom: none; }
+    .astat:hover { background: var(--ink); }
+    .astat:hover .sn { color: var(--yellow); }
+    .astat:hover .sl { color: var(--white); }
+    .astat:hover .sd { color: rgba(255,255,255,.4); }
+    .sn { font-family: var(--ff-d); font-size: 72px; line-height: 1; transition: color .25s; }
+    .sl { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin-top: 8px; transition: color .25s; }
+    .sd { font-size: 13px; color: rgba(17,17,17,.38); margin-top: 6px; transition: color .25s; }
+
+    /* ── SECTION HEADER ── */
+    .sec-hd { padding: 48px 40px 40px; border-bottom: var(--b); display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .sec-eye { font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--red); display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .sec-eye::before { content: ''; width: 24px; height: 2px; background: var(--red); }
+    .sec-ttl { font-family: var(--ff-d); font-size: clamp(40px,5vw,64px); line-height: .95; letter-spacing: .03em; }
+    .sec-ttl .blue { color: var(--blue); }
+    .sec-ttl .red  { color: var(--red);  }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { border-bottom: var(--b); }
+    .port-grid { display: grid; grid-template-columns: repeat(3,1fr); }
+    .port-card { border-right: var(--b); border-bottom: var(--b); overflow: hidden; }
+    .port-card:nth-child(3n) { border-right: none; }
+    .port-card:nth-last-child(-n+3) { border-bottom: none; }
+    .port-img { aspect-ratio: 4/3; overflow: hidden; position: relative; }
+    .port-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease; }
+    .port-card:hover .port-img img { transform: scale(1.07); }
+    .port-ov { position: absolute; inset: 0; background: rgba(17,17,17,.82); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .3s; }
+    .port-card:hover .port-ov { opacity: 1; }
+    .port-vw { font-family: var(--ff-d); font-size: 18px; letter-spacing: .12em; color: var(--yellow); border: 2px solid var(--yellow); padding: 10px 24px; transform: translateY(12px); transition: transform .3s; }
+    .port-card:hover .port-vw { transform: translateY(0); }
+    .port-info { padding: 20px 24px; }
+    .port-cat { font-size: 10px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 6px; }
+    .port-cat.red   { color: var(--red);   }
+    .port-cat.blue  { color: var(--blue);  }
+    .port-cat.green { color: var(--green); }
+    .port-nm { font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+    .port-yr { font-size: 12px; color: var(--soft); }
+
+    /* ── SERVICES ── */
+    #services { display: grid; grid-template-columns: repeat(3,1fr); border-bottom: var(--b); }
+    .svc { padding: 48px 36px; border-right: var(--b); position: relative; overflow: hidden; transition: background .25s; }
+    .svc:last-child { border-right: none; }
+    .svc-n { font-family: var(--ff-d); font-size: 100px; line-height: 1; position: absolute; top: 12px; right: 20px; color: rgba(17,17,17,.05); transition: color .25s; pointer-events: none; }
+    .svc:nth-child(1):hover { background: var(--red);   }
+    .svc:nth-child(2):hover { background: var(--blue);  }
+    .svc:nth-child(3):hover { background: var(--green); }
+    .svc:hover .svc-n    { color: rgba(255,255,255,.07); }
+    .svc:hover .svc-ttl  { color: var(--white); }
+    .svc:hover .svc-desc { color: rgba(255,255,255,.72); }
+    .svc:hover .svc-prc  { color: var(--white); }
+    .svc:hover .chip     { background: rgba(255,255,255,.15); color: var(--white); border-color: rgba(255,255,255,.3); }
+    .svc-ico  { font-size: 36px; display: block; margin-bottom: 20px; position: relative; z-index: 1; }
+    .svc-ttl  { font-family: var(--ff-d); font-size: 30px; letter-spacing: .04em; line-height: 1; margin-bottom: 14px; position: relative; z-index: 1; transition: color .25s; }
+    .svc-desc { font-size: 14px; color: var(--soft); line-height: 1.75; margin-bottom: 20px; position: relative; z-index: 1; transition: color .25s; }
+    .svc-prc  { font-family: var(--ff-d); font-size: 22px; position: relative; z-index: 1; margin-top: 20px; transition: color .25s; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { border-bottom: var(--b); }
+    .testi-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .tc { padding: 40px; border-right: var(--b); border-bottom: var(--b); transition: transform .25s, box-shadow .25s; }
+    .tc:nth-child(2n) { border-right: none; }
+    .tc:nth-last-child(-n+2) { border-bottom: none; }
+    .tc:hover { transform: translate(-4px,-4px); box-shadow: 4px 4px 0 var(--ink); }
+    .tc:nth-child(1) { background: var(--yellow); }
+    .tc:nth-child(4) { background: var(--blue); }
+    .tc:nth-child(4) .tc-txt  { color: rgba(255,255,255,.9); }
+    .tc:nth-child(4) .tc-name { color: var(--white); }
+    .tc:nth-child(4) .tc-role { color: rgba(255,255,255,.55); }
+    .tc:nth-child(4) .tc-av   { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.4); color: var(--white); }
+    .tc:nth-child(4) .tc-qm  { color: var(--white); }
+    .tc-qm  { font-family: var(--ff-d); font-size: 72px; line-height: .8; color: var(--ink); opacity: .12; margin-bottom: 4px; }
+    .tc-txt  { font-size: 15px; font-weight: 500; line-height: 1.7; margin-bottom: 24px; }
+    .tc-auth { display: flex; align-items: center; gap: 12px; }
+    .tc-av   { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--ink); background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0; }
+    .tc-name { font-size: 14px; font-weight: 800; }
+    .tc-role { font-size: 12px; color: var(--soft); margin-top: 2px; }
+
+    /* ── CONTACT ── */
+    #contact { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--b); }
+    .ct-l { background: var(--ink); padding: 64px 40px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
+    .ct-big { font-family: var(--ff-d); font-size: clamp(48px,6vw,80px); line-height: .92; color: var(--white); letter-spacing: .02em; }
+    .ct-big span { color: var(--yellow); }
+    .ct-eye { font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--yellow); display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .ct-eye::before { content: ''; width: 24px; height: 2px; background: var(--yellow); }
+    .ct-items { display: flex; flex-direction: column; gap: 18px; }
+    .ct-item { display: flex; align-items: flex-start; gap: 14px; }
+    .ct-ic   { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .ct-lbl  { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--yellow); margin-bottom: 4px; }
+    .ct-val  { font-size: 14px; color: rgba(255,255,255,.75); }
+
+    .ct-r { background: var(--bg); padding: 64px 40px; border-left: var(--b); }
+    .ct-r h3 { font-family: var(--ff-d); font-size: 40px; letter-spacing: .04em; margin-bottom: 32px; line-height: 1; }
+    .ct-r h3 span { color: var(--red); }
+    .fg { margin-bottom: 16px; }
+    .fg label { display: block; font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--soft); margin-bottom: 7px; }
+    .fg input, .fg select, .fg textarea {
+      width: 100%; background: var(--white); border: 2px solid var(--ink);
+      color: var(--ink); font-family: var(--ff-b); font-size: 14px; font-weight: 500;
+      padding: 11px 15px; outline: none; transition: box-shadow .2s;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { box-shadow: 3px 3px 0 var(--blue); }
+    .fg textarea { resize: none; height: 96px; }
+    .fr { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .btn-sub { width: 100%; background: var(--red); color: var(--white); border: 2px solid var(--red); font-family: var(--ff-d); font-size: 20px; letter-spacing: .1em; padding: 15px; cursor: pointer; margin-top: 8px; transition: all .2s; }
+    .btn-sub:hover { background: var(--ink); border-color: var(--ink); transform: translate(-3px,-3px); box-shadow: 3px 3px 0 var(--red); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .ft-logo { font-family: var(--ff-d); font-size: 22px; letter-spacing: .06em; color: var(--white); }
+    .ft-logo span { color: var(--yellow); }
+    .ft-copy { font-size: 12px; color: rgba(255,255,255,.4); }
+    .ft-copy a { color: var(--yellow); text-decoration: none; }
+    .ft-soc { display: flex; gap: 16px; }
+    .ft-soc a { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+    .ft-soc a:hover { color: var(--yellow); }
+
+    /* ── WA FLOAT ── */
+    #waFloat { position: fixed; bottom: 28px; right: 28px; z-index: 500; background: #25D366; color: white; width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--ink); display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 3px 3px 0 var(--ink); transition: transform .2s, box-shadow .2s; }
+    #waFloat:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .65s, transform .65s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav, footer { padding: 0 28px; }
+      footer { padding: 28px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      #hero { grid-template-columns: 1fr; grid-template-rows: auto auto auto; min-height: auto; }
+      .hero-a { grid-column: 1; grid-row: 1; border-right: none; border-bottom: var(--b); padding: 48px 28px 40px; }
+      .hero-b { grid-column: 1; grid-row: 2; min-height: 360px; }
+      .hero-c { grid-column: 1; grid-row: 3; border-right: none; padding: 32px 28px; }
+
+      .tags-row { flex-wrap: wrap; }
+      .tag-chip { flex: 1 1 30%; }
+
+      #about { grid-template-columns: 1fr; }
+      .about-l { border-right: none; border-bottom: var(--b); padding: 48px 28px; }
+      .about-r { grid-template-rows: auto; grid-template-columns: 1fr 1fr; }
+      .astat { border-right: var(--b); border-bottom: none; }
+      .astat:last-child { border-right: none; }
+
+      .port-grid { grid-template-columns: 1fr 1fr; }
+      .port-card:nth-child(3n)     { border-right: var(--b); }
+      .port-card:nth-child(2n)     { border-right: none; }
+      .port-card:nth-last-child(-n+3) { border-bottom: var(--b); }
+      .port-card:nth-last-child(-n+2) { border-bottom: none; }
+      .port-card:last-child           { border-bottom: none; }
+
+      #services { grid-template-columns: 1fr; }
+      .svc { border-right: none; border-bottom: var(--b); }
+      .svc:last-child { border-bottom: none; }
+
+      #contact { grid-template-columns: 1fr; }
+      .ct-l { padding: 56px 28px; }
+      .ct-r { border-left: none; border-top: var(--b); padding: 48px 28px; }
+
+      .sec-hd { padding: 40px 28px 32px; }
+      .mob-nav { top: 98px; }
+    }
+
+    @media (max-width: 640px) {
+      .ticker { display: none; }
+      .mob-nav { top: 60px; }
+      .hero-a { padding: 40px 20px 32px; }
+      .hero-c { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+      .about-r { grid-template-columns: 1fr; }
+      .astat { border-right: none; border-bottom: var(--b); }
+      .astat:last-child { border-bottom: none; }
+      .port-grid { grid-template-columns: 1fr; }
+      .port-card { border-right: none; }
+      .port-card:nth-last-child(-n+3) { border-bottom: var(--b); }
+      .port-card:last-child { border-bottom: none; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .tc { border-right: none; }
+      .tc:nth-last-child(-n+2) { border-bottom: var(--b); }
+      .tc:last-child { border-bottom: none; }
+      .fr { grid-template-columns: 1fr; }
+      .ct-l, .ct-r { padding: 48px 20px; }
+      .sec-hd { padding: 36px 20px 28px; flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; padding: 24px 20px; }
+      .ft-soc { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">BRAND IDENTITY</span>
+      <span class="ticker-item">GRAPHIC DESIGN</span>
+      <span class="ticker-item">ILUSTRASI</span>
+      <span class="ticker-item">UI/UX DESIGN</span>
+      <span class="ticker-item">PACKAGING</span>
+      <span class="ticker-item">SOSMED KIT</span>
+      <span class="ticker-item">BRAND IDENTITY</span>
+      <span class="ticker-item">GRAPHIC DESIGN</span>
+      <span class="ticker-item">ILUSTRASI</span>
+      <span class="ticker-item">UI/UX DESIGN</span>
+      <span class="ticker-item">PACKAGING</span>
+      <span class="ticker-item">SOSMED KIT</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">ZARA<span>.</span>VISUALS</a>
+    <ul class="nav-links">
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#portfolio">Karya</a></li>
+      <li><a href="#services">Layanan</a></li>
+      <li><a href="#testimonials">Ulasan</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">HIRE ME</a>
+    <button class="hamburger" id="ham" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mob-nav" id="mob">
+    <a href="#about"        onclick="cn()">TENTANG</a>
+    <a href="#portfolio"    onclick="cn()">KARYA</a>
+    <a href="#services"     onclick="cn()">LAYANAN</a>
+    <a href="#testimonials" onclick="cn()">ULASAN</a>
+    <a href="#contact"      onclick="cn()">KONTAK</a>
+  </div>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section id="hero">
+      <div class="hero-a">
+        <div class="hero-eyebrow">Graphic Designer · Jakarta</div>
+        <h1 class="hero-title">
+          DESAIN<br>
+          <span class="red">YANG</span><br>
+          <span class="outline">BICARA</span>
+        </h1>
+      </div>
+
+      <div class="hero-b">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&q=85" alt="Zara Visuals portfolio showcase" />
+        <div class="hero-badge">
+          <p>Tersedia Untuk Proyek</p>
+          <strong>Open to Work ✦</strong>
+        </div>
+      </div>
+
+      <div class="hero-c">
+        <p class="hero-desc">Graphic designer dengan spesialisasi <strong>branding, packaging,</strong> dan <strong>identitas visual</strong> — membantu bisnis tampil beda, konsisten, dan dikenang pelanggan.</p>
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn-red">LIHAT KARYA →</a>
+          <a href="#contact"   class="btn-lnk">Mulai Proyek</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAGS -->
+    <div class="tags-row" aria-hidden="true">
+      <span class="tag-chip red">Branding</span>
+      <span class="tag-chip">Packaging</span>
+      <span class="tag-chip blue">UI Design</span>
+      <span class="tag-chip">Ilustrasi</span>
+      <span class="tag-chip">Logo</span>
+      <span class="tag-chip green">Sosmed Kit</span>
+    </div>
+
+    <!-- ═══ ABOUT ═══ -->
+    <section id="about">
+      <div class="about-l reveal">
+        <div class="sec-eye">Tentang Saya</div>
+        <h2>ZARA<br><span>AMALIA</span></h2>
+        <p>Halo! Saya Zara, graphic designer freelance dengan 4+ tahun pengalaman membangun identitas visual untuk brand lokal, UMKM, dan startup Indonesia.</p>
+        <p>Saya percaya desain yang kuat bukan hanya soal estetika — tapi tentang pesan yang sampai, emosi yang terbentuk, dan bisnis yang tumbuh bersama.</p>
+        <div class="chips">
+          <span class="chip">Illustrator</span>
+          <span class="chip">Figma</span>
+          <span class="chip">Photoshop</span>
+          <span class="chip">After Effects</span>
+          <span class="chip">Procreate</span>
+          <span class="chip">Canva Pro</span>
+        </div>
+      </div>
+      <div class="about-r">
+        <div class="astat reveal">
+          <div class="sn">80+</div>
+          <div class="sl">Proyek Selesai</div>
+          <div class="sd">Brand lokal, startup, UMKM</div>
+        </div>
+        <div class="astat reveal">
+          <div class="sn">4★</div>
+          <div class="sl">Tahun Pengalaman</div>
+          <div class="sd">Freelance & agency background</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PORTFOLIO ═══ -->
+    <section id="portfolio">
+      <div class="sec-hd">
+        <div>
+          <div class="sec-eye reveal">Portofolio</div>
+          <h2 class="sec-ttl reveal">KARYA <span class="blue">PILIHAN</span></h2>
+        </div>
+      </div>
+      <div class="port-grid">
+        <div class="port-card reveal">
+          <div class="port-img">
+            <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&q=80" alt="Kopi Rimbun Branding" loading="lazy" />
+            <div class="port-ov"><span class="port-vw">LIHAT →</span></div>
+          </div>
+          <div class="port-info">
+            <div class="port-cat red">Brand Identity</div>
+            <div class="port-nm">Kopi Rimbun</div>
+            <div class="port-yr">2024</div>
+          </div>
+        </div>
+        <div class="port-card reveal">
+          <div class="port-img">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Rempah Asri Packaging" loading="lazy" />
+            <div class="port-ov"><span class="port-vw">LIHAT →</span></div>
+          </div>
+          <div class="port-info">
+            <div class="port-cat blue">Packaging Design</div>
+            <div class="port-nm">Rempah Asri</div>
+            <div class="port-yr">2024</div>
+          </div>
+        </div>
+        <div class="port-card reveal">
+          <div class="port-img">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80" alt="Batik Illustration" loading="lazy" />
+            <div class="port-ov"><span class="port-vw">LIHAT →</span></div>
+          </div>
+          <div class="port-info">
+            <div class="port-cat green">Ilustrasi</div>
+            <div class="port-nm">Batik Nusantara Series</div>
+            <div class="port-yr">2023</div>
+          </div>
+        </div>
+        <div class="port-card reveal">
+          <div class="port-img">
+            <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=600&q=80" alt="Warung Sehat Logo" loading="lazy" />
+            <div class="port-ov"><span class="port-vw">LIHAT →</span></div>
+          </div>
+          <div class="port-info">
+            <div class="port-cat red">Logo Design</div>
+            <div class="port-nm">Warung Sehat ID</div>
+            <div class="port-yr">2023</div>
+          </div>
+        </div>
+        <div class="port-card reveal">
+          <div class="port-img">
+            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80" alt="Tokobuku App UI" loading="lazy" />
+            <div class="port-ov"><span class="port-vw">LIHAT →</span></div>
+          </div>
+          <div class="port-info">
+            <div class="port-cat blue">UI Design</div>
+            <div class="port-nm">Tokobuku App</div>
+            <div class="port-yr">2023</div>
+          </div>
+        </div>
+        <div class="port-card reveal">
+          <div class="port-img">
+            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80" alt="Butik Laras Social Kit" loading="lazy" />
+            <div class="port-ov"><span class="port-vw">LIHAT →</span></div>
+          </div>
+          <div class="port-info">
+            <div class="port-cat green">Social Media Kit</div>
+            <div class="port-nm">Butik Laras</div>
+            <div class="port-yr">2022</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SERVICES ═══ -->
+    <section id="services">
+      <div class="svc reveal">
+        <div class="svc-n" aria-hidden="true">01</div>
+        <span class="svc-ico">🎨</span>
+        <div class="svc-ttl">BRAND IDENTITY</div>
+        <p class="svc-desc">Logo, color palette, typography, brand guidelines — semua yang dibutuhkan untuk tampil konsisten dan profesional di semua platform.</p>
+        <div class="chips"><span class="chip">Logo</span><span class="chip">Guidelines</span><span class="chip">Stationery</span></div>
+        <div class="svc-prc">Mulai Rp 800.000</div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-n" aria-hidden="true">02</div>
+        <span class="svc-ico">📦</span>
+        <div class="svc-ttl">PACKAGING DESIGN</div>
+        <p class="svc-desc">Desain kemasan yang menarik perhatian di rak dan membangun trust konsumen. Cocok untuk UMKM produk makanan, kosmetik, dan lifestyle.</p>
+        <div class="chips"><span class="chip">Label</span><span class="chip">Box</span><span class="chip">Pouch</span></div>
+        <div class="svc-prc">Mulai Rp 500.000</div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-n" aria-hidden="true">03</div>
+        <span class="svc-ico">📱</span>
+        <div class="svc-ttl">SOCIAL MEDIA KIT</div>
+        <p class="svc-desc">Template feed, story, dan highlight yang konsisten dan eye-catching. Tinggal ganti teks dan foto — siap dipakai setiap hari.</p>
+        <div class="chips"><span class="chip">Feed</span><span class="chip">Story</span><span class="chip">Reels Cover</span></div>
+        <div class="svc-prc">Mulai Rp 300.000</div>
+      </div>
+    </section>
+
+    <!-- ═══ TESTIMONIALS ═══ -->
+    <section id="testimonials">
+      <div class="sec-hd">
+        <div>
+          <div class="sec-eye reveal">Kata Klien</div>
+          <h2 class="sec-ttl reveal">MEREKA <span class="red">BICARA</span></h2>
+        </div>
+      </div>
+      <div class="testi-grid">
+        <div class="tc reveal">
+          <div class="tc-qm">"</div>
+          <p class="tc-txt">Logo yang Zara buat langsung jadi bahan pembicaraan pelanggan kami. Desainnya bold tapi tetap profesional. Sangat puas!</p>
+          <div class="tc-auth"><div class="tc-av">RA</div><div><div class="tc-name">Rafi Anwar</div><div class="tc-role">Owner, Kopi Rimbun</div></div></div>
+        </div>
+        <div class="tc reveal">
+          <div class="tc-qm">"</div>
+          <p class="tc-txt">Packaging produk kami jauh lebih premium. Penjualan naik 40% setelah ganti desain baru dari Zara. Worth every penny!</p>
+          <div class="tc-auth"><div class="tc-av">NS</div><div><div class="tc-name">Nadia Sari</div><div class="tc-role">Founder, Rempah Asri</div></div></div>
+        </div>
+        <div class="tc reveal">
+          <div class="tc-qm">"</div>
+          <p class="tc-txt">Social media kit-nya keren banget dan gampang dipakai. Tim kami yang tidak bisa desain pun bisa buat konten kece tiap hari!</p>
+          <div class="tc-auth"><div class="tc-av">DL</div><div><div class="tc-name">Diana Lestari</div><div class="tc-role">Marketing, Butik Laras</div></div></div>
+        </div>
+        <div class="tc reveal">
+          <div class="tc-qm">"</div>
+          <p class="tc-txt">Proses kerja sangat rapi dan komunikatif. Revisi cepat, hasilnya selalu melampaui ekspektasi. Sudah order 3x dan akan terus balik!</p>
+          <div class="tc-auth"><div class="tc-av">HF</div><div><div class="tc-name">Hendra Firmansyah</div><div class="tc-role">CEO, Tokobuku Digital</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact">
+      <div class="ct-l reveal">
+        <div>
+          <div class="ct-eye">Hubungi Saya</div>
+          <h2 class="ct-big">PUNYA<br>IDE <span>GILA?</span><br>CERITAIN.</h2>
+        </div>
+        <div class="ct-items">
+          <div class="ct-item"><div class="ct-ic">✉️</div><div><div class="ct-lbl">Email</div><div class="ct-val">zara@zaravisuals.id</div></div></div>
+          <div class="ct-item"><div class="ct-ic">💬</div><div><div class="ct-lbl">WhatsApp</div><div class="ct-val">+62 812-0000-0000</div></div></div>
+          <div class="ct-item"><div class="ct-ic">📍</div><div><div class="ct-lbl">Lokasi</div><div class="ct-val">Jakarta — Remote friendly ✓</div></div></div>
+        </div>
+      </div>
+      <div class="ct-r reveal">
+        <h3>MULAI <span>PROYEK</span></h3>
+        <div class="fr">
+          <div class="fg"><label>Nama Kamu</label><input type="text" placeholder="Budi Santoso" /></div>
+          <div class="fg"><label>WhatsApp</label><input type="tel" placeholder="08xx-xxxx-xxxx" /></div>
+        </div>
+        <div class="fg">
+          <label>Jenis Proyek</label>
+          <select>
+            <option>Brand Identity / Logo</option>
+            <option>Packaging Design</option>
+            <option>Social Media Kit</option>
+            <option>Ilustrasi</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="fg"><label>Ceritakan Ide Kamu</label><textarea placeholder="Bisnis saya bergerak di bidang..."></textarea></div>
+        <button class="btn-sub" onclick="kirimWA()">KIRIM VIA WHATSAPP →</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="ft-logo">ZARA<span>.</span>VISUALS</div>
+    <p class="ft-copy">© 2025 Zara Visuals. Website oleh <a href="https://dikshrly.site" target="_blank">Andika Dwi Putra</a></p>
+    <div class="ft-soc">
+      <a href="#">Instagram</a>
+      <a href="#">Behance</a>
+      <a href="#">Dribbble</a>
+    </div>
+  </footer>
+
+  <a id="waFloat" href="https://wa.me/6281200000000?text=Halo%20Zara%2C%20saya%20ingin%20diskusi%20proyek%20desain!" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    document.getElementById('ham').addEventListener('click', () => document.getElementById('mob').classList.toggle('open'));
+    function cn() { document.getElementById('mob').classList.remove('open'); }
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    function kirimWA() {
+      window.open('https://wa.me/6281200000000?text=' + encodeURIComponent('Halo Zara! Saya ingin diskusi proyek desain.'), '_blank');
+    }
+  </script>
+</body>
+</html>
