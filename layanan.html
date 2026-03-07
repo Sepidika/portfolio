@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layanan — Cerkas.id</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero {
+  background: var(--ink);
+  padding: 80px 5vw 64px;
+  position: relative; overflow: hidden;
+}
+.page-hero-bg {
+  position: absolute;
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(120px, 25vw, 300px);
+  color: rgba(255,255,255,0.03);
+  right: -2vw; bottom: -20px;
+  line-height: 1; pointer-events: none;
+}
+.page-hero-title {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(48px, 9vw, 100px);
+  letter-spacing: -0.04em; line-height: 0.9;
+  color: #fff; position: relative; z-index: 1;
+}
+.page-hero-title .outline {
+  -webkit-text-stroke: 2px rgba(255,255,255,0.25);
+  color: transparent;
+}
+.page-hero-sub {
+  font-size: 16px; color: rgba(255,255,255,0.45);
+  margin-top: 20px; max-width: 480px; line-height: 1.7;
+  position: relative; z-index: 1;
+}
+
+/* ── SERVICE DETAIL ── */
+.service-section {
+  padding: 80px 5vw;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: relative; z-index: 1;
+}
+.service-section:nth-child(even) { background: var(--white); }
+
+.service-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 48px; align-items: start;
+}
+@media(min-width:860px){ .service-grid { grid-template-columns: 1fr 1fr; } }
+
+.service-left {}
+.service-num {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 80px; color: rgba(0,0,0,0.06);
+  line-height: 1; margin-bottom: -24px;
+}
+.service-name {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(28px, 5vw, 52px);
+  letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: 16px;
+}
+.service-desc {
+  font-size: 15px; color: var(--muted);
+  line-height: 1.8; margin-bottom: 32px;
+}
+.service-tags {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px;
+}
+.tag {
+  background: rgba(37,99,235,0.08);
+  color: var(--biru); font-size: 12px; font-weight: 700;
+  padding: 6px 14px; border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.service-right {}
+.service-features {
+  border: 1px solid rgba(0,0,0,0.08); border-radius: 8px;
+  overflow: hidden;
+}
+.sf-header {
+  background: var(--ink); padding: 20px 24px;
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 14px; color: #fff; letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.sf-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 14px; line-height: 1.5;
+}
+.sf-item:last-child { border-bottom: none; }
+.sf-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--biru); flex-shrink: 0; margin-top: 6px;
+}
+.sf-price {
+  background: var(--biru);
+  padding: 16px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.sf-price-label { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 600; }
+.sf-price-val {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 20px; color: #fff; letter-spacing: -0.02em;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg">Layanan</div>
+    <div class="eyebrow light reveal">Apa yang kami kerjakan</div>
+    <h1 class="page-hero-title reveal">
+      Layanan<br><span class="outline">Digital</span><br>Cerkas
+    </h1>
+    <p class="page-hero-sub reveal">Tiga layanan utama yang kami kuasai — dibuat khusus untuk bisnis lokal Indonesia yang ingin bergerak tangkas.</p>
+  </div>
+
+  <!-- 01 WEBSITE -->
+  <section class="service-section" id="website">
+    <div class="service-grid">
+      <div class="service-left reveal">
+        <div class="service-num">01</div>
+        <div class="eyebrow">Website & Landing Page</div>
+        <h2 class="service-name">Tampil profesional,<br>convert lebih banyak.</h2>
+        <p class="service-desc">Website bukan sekadar tampilan — ini adalah alat bisnis kamu yang bekerja 24 jam. Kami bangun dari nol, mobile-first, cepat, dan dirancang untuk konversi.</p>
+        <div class="service-tags">
+          <span class="tag">Landing Page</span>
+          <span class="tag">Company Profile</span>
+          <span class="tag">Toko Online</span>
+          <span class="tag">Mobile-First</span>
+          <span class="tag">SEO Ready</span>
+        </div>
+        <a href="harga.html" class="btn btn-dark">Lihat Paket Harga →</a>
+      </div>
+      <div class="service-right reveal">
+        <div class="service-features">
+          <div class="sf-header">Yang kamu dapat</div>
+          <div class="sf-item"><div class="sf-dot"></div>Desain custom sesuai brand kamu</div>
+          <div class="sf-item"><div class="sf-dot"></div>Mobile-friendly & loading cepat</div>
+          <div class="sf-item"><div class="sf-dot"></div>SEO dasar sudah terpasang</div>
+          <div class="sf-item"><div class="sf-dot"></div>Formulir kontak & integrasi WhatsApp</div>
+          <div class="sf-item"><div class="sf-dot"></div>Domain + hosting sudah termasuk</div>
+          <div class="sf-item"><div class="sf-dot"></div>Revisi hingga puas</div>
+          <div class="sf-price">
+            <span class="sf-price-label">Mulai dari</span>
+            <span class="sf-price-val">Rp 1,5 jt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 CHATBOT -->
+  <section class="service-section" id="chatbot">
+    <div class="service-grid">
+      <div class="service-left reveal">
+        <div class="service-num">02</div>
+        <div class="eyebrow">AI Chatbot</div>
+        <h2 class="service-name">Layani pelanggan<br>24 jam nonstop.</h2>
+        <p class="service-desc">Chatbot berbasis AI yang bisa menjawab pertanyaan, memandu pelanggan, dan bahkan membantu proses pembelian — tanpa kamu harus selalu standby.</p>
+        <div class="service-tags">
+          <span class="tag">WhatsApp Bot</span>
+          <span class="tag">Website Chat</span>
+          <span class="tag">FAQ Otomatis</span>
+          <span class="tag">Custom Persona</span>
+          <span class="tag">Multi-platform</span>
+        </div>
+        <a href="harga.html" class="btn btn-dark">Lihat Paket Harga →</a>
+      </div>
+      <div class="service-right reveal">
+        <div class="service-features">
+          <div class="sf-header">Yang kamu dapat</div>
+          <div class="sf-item"><div class="sf-dot"></div>AI yang bisa di-training sesuai bisnis kamu</div>
+          <div class="sf-item"><div class="sf-dot"></div>Integrasi WhatsApp & website</div>
+          <div class="sf-item"><div class="sf-dot"></div>Persona & tone of voice custom</div>
+          <div class="sf-item"><div class="sf-dot"></div>Otomatis jawab FAQ pelanggan</div>
+          <div class="sf-item"><div class="sf-dot"></div>Laporan percakapan bulanan</div>
+          <div class="sf-item"><div class="sf-dot"></div>Update & maintenance rutin</div>
+          <div class="sf-price">
+            <span class="sf-price-label">Mulai dari</span>
+            <span class="sf-price-val">Rp 2 jt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 KONTEN -->
+  <section class="service-section" id="konten">
+    <div class="service-grid">
+      <div class="service-left reveal">
+        <div class="service-num">03</div>
+        <div class="eyebrow">Konten & Copywriting</div>
+        <h2 class="service-name">Kata-kata yang<br>bikin orang beli.</h2>
+        <p class="service-desc">Konten bukan cuma tulisan — ini adalah cara kamu ngomong ke audiens. Kami bantu kamu komunikasi dengan tepat, dari caption Instagram sampai email marketing.</p>
+        <div class="service-tags">
+          <span class="tag">Caption Instagram</span>
+          <span class="tag">Artikel Blog</span>
+          <span class="tag">Email Marketing</span>
+          <span class="tag">Copywriting</span>
+          <span class="tag">Strategi Konten</span>
+        </div>
+        <a href="harga.html" class="btn btn-dark">Lihat Paket Harga →</a>
+      </div>
+      <div class="service-right reveal">
+        <div class="service-features">
+          <div class="sf-header">Yang kamu dapat</div>
+          <div class="sf-item"><div class="sf-dot"></div>Copywriting halaman website / landing page</div>
+          <div class="sf-item"><div class="sf-dot"></div>Caption Instagram yang engaging</div>
+          <div class="sf-item"><div class="sf-dot"></div>Artikel blog SEO-friendly</div>
+          <div class="sf-item"><div class="sf-dot"></div>Email marketing sequence</div>
+          <div class="sf-item"><div class="sf-dot"></div>Tone of voice sesuai brand kamu</div>
+          <div class="sf-item"><div class="sf-dot"></div>Kalender konten bulanan</div>
+          <div class="sf-price">
+            <span class="sf-price-label">Mulai dari</span>
+            <span class="sf-price-val">Rp 750 rb</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div style="background:var(--biru);padding:64px 5vw;text-align:center;position:relative;z-index:1;" class="reveal">
+    <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,5vw,52px);color:#fff;letter-spacing:-0.03em;margin-bottom:16px;">Mau mulai dari mana?</h2>
+    <p style="font-size:15px;color:rgba(255,255,255,0.65);margin-bottom:32px;">Konsultasi gratis, kami bantu tentukan paket yang paling cocok.</p>
+    <a href="kontak.html" class="btn btn-white">💬 Konsultasi Gratis →</a>
+  </div>
+
+</div>
+<script src="shared.js"></script>
+<script>setActive('layanan');</script>
+</body>
+</html>
