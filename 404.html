@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Halaman Tidak Ditemukan · Cerkas.id</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:     #0A0A0A;
+  --paper:   #F4F1EB;
+  --biru:    #2563EB;
+  --biru-lt: #93C5FD;
+  --bara:    #C8522A;
+  --muted:   #7A7670;
+  --grid:    rgba(0,0,0,0.055);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 24px;
+  text-align: center;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none; z-index: 0;
+}
+
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px; background: var(--ink);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center;
+  justify-content: space-between; padding: 0 5vw;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-icon {
+  width: 32px; height: 32px; background: var(--biru);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+}
+.nav-wordmark {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: 18px; color: #fff; letter-spacing: -0.03em;
+}
+.nav-wordmark em { color: var(--biru-lt); font-style: normal; }
+.nav-cta {
+  background: var(--biru); color: #fff;
+  font-size: 13px; font-weight: 700;
+  padding: 9px 20px; border-radius: 6px;
+  text-decoration: none; transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* 404 content */
+.content {
+  position: relative; z-index: 1;
+  max-width: 560px;
+  animation: fadeUp 0.7s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.big-404 {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: clamp(120px, 25vw, 220px);
+  letter-spacing: -0.06em; line-height: 1;
+  color: var(--ink);
+  position: relative; display: inline-block;
+  margin-bottom: 8px;
+}
+.big-404 .outline {
+  -webkit-text-stroke: 3px var(--ink); color: transparent;
+}
+.big-404 .blue { color: var(--biru); }
+
+/* floating dot accents */
+.dot-acc {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.dot-acc.d1 {
+  width: 14px; height: 14px; background: var(--bara);
+  top: 12px; right: -8px;
+  animation: bob 3s ease-in-out infinite;
+}
+.dot-acc.d2 {
+  width: 8px; height: 8px; background: var(--biru);
+  bottom: 20px; left: -12px;
+  animation: bob 4s ease-in-out infinite 0.5s;
+}
+@keyframes bob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+
+.err-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--bara);
+  display: flex; align-items: center; gap: 8px; justify-content: center;
+  margin-bottom: 20px;
+}
+.err-label::before, .err-label::after {
+  content: ''; flex: 1; max-width: 40px; height: 1.5px; background: var(--bara);
+}
+
+.err-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: clamp(22px, 4vw, 32px); letter-spacing: -0.03em;
+  color: var(--ink); margin-bottom: 14px;
+}
+
+.err-desc {
+  font-size: 15px; color: var(--muted); line-height: 1.75;
+  margin-bottom: 36px; font-weight: 500;
+}
+
+.err-actions {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: 14px;
+  padding: 14px 28px; border-radius: 8px;
+  text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
+}
+.btn-dark { background: var(--ink); color: var(--paper); }
+.btn-dark:hover { background: var(--biru); }
+.btn-outline {
+  background: transparent; color: var(--muted);
+  border: 1.5px solid rgba(0,0,0,0.12);
+}
+.btn-outline:hover { border-color: var(--biru); color: var(--ink); }
+
+/* quick links */
+.quick-links {
+  margin-top: 48px; padding-top: 32px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+}
+.quick-link {
+  font-size: 13px; font-weight: 700; color: var(--muted);
+  text-decoration: none; transition: color 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.quick-link:hover { color: var(--biru); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-icon">
+      <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+        <path d="M26 9C23.5 6.5 20 5 16 5C9.4 5 4 10.4 4 17C4 23.6 9.4 29 16 29C20 29 23.5 27.5 26 25" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M22 17 L32 17" stroke="#93C5FD" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M28 13 L32 17 L28 21" stroke="#93C5FD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="26" cy="9" r="2" fill="#C8522A"/>
+      </svg>
+    </div>
+    <span class="nav-wordmark">cerkas<em>.id</em></span>
+  </a>
+  <a href="kontak.html" class="nav-cta">Mulai →</a>
+</nav>
+
+<div class="content">
+  <div style="position:relative;display:inline-block;">
+    <div class="big-404">
+      4<span class="outline">0</span><span class="blue">4</span>
+    </div>
+    <div class="dot-acc d1"></div>
+    <div class="dot-acc d2"></div>
+  </div>
+
+  <div class="err-label">Halaman tidak ditemukan</div>
+  <h1 class="err-title">Aduh, salah jalan nih.</h1>
+  <p class="err-desc">Halaman yang kamu cari sudah dipindah, dihapus,<br>atau mungkin belum pernah ada. Tenang, masih banyak yang bisa dieksplorasi.</p>
+
+  <div class="err-actions">
+    <a href="index.html" class="btn btn-dark">← Balik ke Home</a>
+    <a href="kontak.html" class="btn btn-outline">Hubungi Kami</a>
+  </div>
+
+  <div class="quick-links">
+    <a href="layanan.html" class="quick-link">🌐 Layanan</a>
+    <a href="portofolio.html" class="quick-link">💼 Portofolio</a>
+    <a href="harga.html" class="quick-link">💰 Harga</a>
+    <a href="cara-kerja.html" class="quick-link">⚙️ Cara Kerja</a>
+  </div>
+</div>
+
+</body>
+</html>
