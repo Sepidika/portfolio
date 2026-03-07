@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kebijakan Privasi & Syarat Ketentuan — Cerkas.id</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:     #0A0A0A;
+  --paper:   #F4F1EB;
+  --white:   #ffffff;
+  --biru:    #2563EB;
+  --biru-lt: #93C5FD;
+  --bara:    #C8522A;
+  --muted:   #7A7670;
+  --grid:    rgba(0,0,0,0.055);
+  --border:  rgba(0,0,0,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px; background: var(--ink);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center;
+  justify-content: space-between; padding: 0 5vw;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-icon {
+  width: 32px; height: 32px; background: var(--biru);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-wordmark {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: 18px; color: #fff; letter-spacing: -0.03em;
+}
+.nav-wordmark em { color: var(--biru-lt); font-style: normal; }
+.nav-cta {
+  background: var(--biru); color: #fff;
+  font-size: 13px; font-weight: 700;
+  padding: 9px 20px; border-radius: 6px;
+  text-decoration: none; transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── PAGE ── */
+.page { padding-top: 64px; position: relative; z-index: 1; }
+
+/* ── HERO ── */
+.page-hero {
+  background: var(--ink); padding: 56px 5vw 48px;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+.hero-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--biru-lt);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+}
+.hero-eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--biru-lt); flex-shrink: 0; }
+.hero-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: clamp(32px, 6vw, 60px); letter-spacing: -0.04em; line-height: 0.92;
+  color: #fff; margin-bottom: 20px;
+}
+.hero-title .outline { -webkit-text-stroke: 1.5px rgba(255,255,255,0.25); color: transparent; }
+.hero-meta {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 600;
+}
+
+/* ── STICKY TABS ── */
+.tabs-bar {
+  position: sticky; top: 64px; z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5vw;
+  display: flex; gap: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.tab-btn {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px; font-weight: 700;
+  padding: 18px 24px;
+  border: none; border-bottom: 2px solid transparent;
+  background: transparent; color: var(--muted);
+  cursor: pointer; white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.tab-btn:hover { color: var(--ink); }
+.tab-btn.active { color: var(--biru); border-bottom-color: var(--biru); }
+
+/* ── CONTENT ── */
+.doc-content {
+  max-width: 760px; margin: 0 auto;
+  padding: 56px 5vw 80px;
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── SECTIONS ── */
+.doc-section {
+  margin-bottom: 48px; padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.doc-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.doc-section-num {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--biru); margin-bottom: 8px;
+}
+.doc-section-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: 22px; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px;
+}
+.doc-body {
+  font-size: 14px; color: #404040; line-height: 1.85; font-weight: 500;
+}
+.doc-body p { margin-bottom: 14px; }
+.doc-body p:last-child { margin-bottom: 0; }
+.doc-body ul, .doc-body ol {
+  margin: 14px 0; padding-left: 20px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.doc-body li { color: var(--muted); }
+.doc-body strong { color: var(--ink); font-weight: 700; }
+.doc-body a { color: var(--biru); text-underline-offset: 3px; }
+
+.highlight-box {
+  background: rgba(37,99,235,0.06);
+  border: 1px solid rgba(37,99,235,0.15);
+  border-left: 3px solid var(--biru);
+  border-radius: 8px; padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 13px; color: var(--ink); line-height: 1.7; font-weight: 600;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); padding: 40px 5vw 28px;
+  position: relative; z-index: 1;
+}
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-icon">
+      <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+        <path d="M26 9C23.5 6.5 20 5 16 5C9.4 5 4 10.4 4 17C4 23.6 9.4 29 16 29C20 29 23.5 27.5 26 25" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M22 17 L32 17" stroke="#93C5FD" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M28 13 L32 17 L28 21" stroke="#93C5FD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="26" cy="9" r="2" fill="#C8522A"/>
+      </svg>
+    </div>
+    <span class="nav-wordmark">cerkas<em>.id</em></span>
+  </a>
+  <a href="/kontak/" class="nav-cta">Mulai →</a>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Legal</div>
+      <h1 class="hero-title">
+        Kebijakan &amp;<br><span class="outline">Ketentuan</span>
+      </h1>
+      <div class="hero-meta">
+        <span>Berlaku sejak: 1 Januari 2025</span>
+        <span>Terakhir diperbarui: Januari 2025</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS BAR -->
+  <div class="tabs-bar">
+    <button class="tab-btn active" onclick="switchTab('privasi-tab', this)">🔒 Kebijakan Privasi</button>
+    <button class="tab-btn" onclick="switchTab('syarat-tab', this)">📋 Syarat &amp; Ketentuan</button>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="doc-content">
+
+    <!-- KEBIJAKAN PRIVASI -->
+    <div id="privasi-tab" class="tab-panel active">
+
+      <div class="doc-section">
+        <div class="doc-section-num">01</div>
+        <div class="doc-section-title">Informasi yang Kami Kumpulkan</div>
+        <div class="doc-body">
+          <p>Cerkas.id mengumpulkan informasi yang kamu berikan secara langsung saat mengisi formulir kontak, melakukan pemesanan layanan, atau berkomunikasi dengan kami melalui WhatsApp, email, atau Instagram.</p>
+          <ul>
+            <li><strong>Informasi identitas:</strong> nama lengkap, nama bisnis/usaha</li>
+            <li><strong>Informasi kontak:</strong> nomor WhatsApp, alamat email</li>
+            <li><strong>Informasi proyek:</strong> kebutuhan layanan, estimasi budget, detail brief</li>
+            <li><strong>Informasi teknis:</strong> data website atau akun digital yang kamu bagikan dalam konteks pengerjaan proyek</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">02</div>
+        <div class="doc-section-title">Cara Kami Menggunakan Informasi</div>
+        <div class="doc-body">
+          <p>Informasi yang kamu berikan digunakan semata-mata untuk keperluan berikut:</p>
+          <ul>
+            <li>Menghubungi kamu untuk konsultasi dan pengiriman proposal</li>
+            <li>Mengerjakan proyek sesuai brief yang disepakati</li>
+            <li>Mengirim pembaruan status pengerjaan proyek</li>
+            <li>Keperluan administrasi dan pembayaran</li>
+          </ul>
+          <div class="highlight-box">
+            ✦ Cerkas.id <strong>tidak pernah menjual, menyewakan, atau membagikan</strong> data pribadimu kepada pihak ketiga untuk keperluan marketing atau iklan.
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">03</div>
+        <div class="doc-section-title">Keamanan Data</div>
+        <div class="doc-body">
+          <p>Kami menjaga kerahasiaan semua informasi yang kamu berikan. Akses terhadap data klien dibatasi hanya untuk anggota tim yang terlibat langsung dalam pengerjaan proyek kamu.</p>
+          <p>Semua komunikasi dilakukan melalui platform terenkripsi (WhatsApp, email). File proyek disimpan secara aman dan tidak dibagikan ke luar tim tanpa izin eksplisit dari klien.</p>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">04</div>
+        <div class="doc-section-title">Portofolio &amp; Showcase</div>
+        <div class="doc-body">
+          <p>Cerkas.id mungkin menampilkan hasil kerja proyek sebagai bagian dari portofolio kami, kecuali klien secara eksplisit meminta kerahasiaan (NDA) sebelum proyek dimulai.</p>
+          <p>Jika kamu tidak ingin hasil proyek ditampilkan di portofolio kami, silakan informasikan saat konsultasi awal dan kami akan menghormati permintaan tersebut.</p>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">05</div>
+        <div class="doc-section-title">Cookie &amp; Analitik</div>
+        <div class="doc-body">
+          <p>Website cerkas.id mungkin menggunakan cookie dasar dan alat analitik (seperti Google Analytics) untuk memahami bagaimana pengunjung menggunakan situs kami. Data ini bersifat anonim dan tidak dapat diidentifikasi secara personal.</p>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">06</div>
+        <div class="doc-section-title">Pertanyaan Privasi</div>
+        <div class="doc-body">
+          <p>Jika kamu punya pertanyaan tentang kebijakan privasi ini atau ingin meminta penghapusan data, hubungi kami di:</p>
+          <ul>
+            <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#066e676a69466563746d6775286f62"><span class="__cf_email__" data-cfemail="422a232e2d022127302923316c2b26">[email&#160;protected]</span></a></li>
+            <li><strong>WhatsApp:</strong> +62 xxx xxxx xxxx</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SYARAT & KETENTUAN -->
+    <div id="syarat-tab" class="tab-panel">
+
+      <div class="doc-section">
+        <div class="doc-section-num">01</div>
+        <div class="doc-section-title">Penerimaan Layanan</div>
+        <div class="doc-body">
+          <p>Dengan menggunakan layanan Cerkas.id, kamu menyatakan telah membaca, memahami, dan menyetujui semua syarat dan ketentuan yang berlaku. Syarat ini berlaku untuk semua layanan yang kami sediakan, termasuk Website, AI Chatbot, dan Konten & Copywriting.</p>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">02</div>
+        <div class="doc-section-title">Pembayaran</div>
+        <div class="doc-body">
+          <p>Sistem pembayaran Cerkas.id menggunakan skema bertahap sebagai berikut:</p>
+          <ul>
+            <li><strong>DP 50%</strong> di awal untuk memulai pengerjaan proyek</li>
+            <li><strong>Pelunasan 50%</strong> setelah proyek selesai dan disetujui klien, sebelum serah terima file/akses</li>
+          </ul>
+          <p>Pembayaran dapat dilakukan melalui transfer bank (BCA, Mandiri, BRI) atau dompet digital (GoPay, OVO, DANA). Invoice akan dikirim via email atau WhatsApp.</p>
+          <div class="highlight-box">
+            ✦ Proyek tidak akan dimulai sebelum DP diterima. Serah terima akses/file tidak dilakukan sebelum pelunasan penuh.
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">03</div>
+        <div class="doc-section-title">Revisi &amp; Pengerjaan</div>
+        <div class="doc-body">
+          <p>Setiap paket layanan Cerkas.id mencakup sejumlah putaran revisi yang disepakati di awal:</p>
+          <ul>
+            <li><strong>Paket Starter:</strong> 2× revisi minor</li>
+            <li><strong>Paket Pro:</strong> 3× revisi</li>
+            <li><strong>Paket Business:</strong> revisi tidak terbatas selama masa pengerjaan</li>
+          </ul>
+          <p>Revisi di luar paket dikenakan biaya tambahan yang disepakati sebelum dikerjakan. Permintaan perubahan besar yang mengubah scope proyek secara signifikan dihitung sebagai proyek baru.</p>
+          <p>Estimasi waktu pengerjaan bersifat indikatif. Keterlambatan akibat lambatnya respons klien dalam menyediakan materi/konten tidak menjadi tanggung jawab Cerkas.id.</p>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">04</div>
+        <div class="doc-section-title">Hak Cipta &amp; Kepemilikan</div>
+        <div class="doc-body">
+          <p>Setelah pelunasan penuh, seluruh hak atas hasil kerja (website, konten, bot) diserahkan sepenuhnya kepada klien.</p>
+          <p>Selama masa pengerjaan atau sebelum pelunasan, seluruh output tetap menjadi milik Cerkas.id dan tidak boleh digunakan, dipublikasikan, atau dimodifikasi tanpa izin tertulis.</p>
+          <ul>
+            <li>Klien bertanggung jawab memastikan semua materi yang diberikan (foto, teks, logo) tidak melanggar hak cipta pihak lain</li>
+            <li>Cerkas.id berhak menolak permintaan konten yang melanggar hukum, bersifat SARA, atau merugikan pihak lain</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">05</div>
+        <div class="doc-section-title">Pembatalan &amp; Refund</div>
+        <div class="doc-body">
+          <p>Pembatalan proyek oleh klien setelah pengerjaan dimulai tidak mendapat refund DP. Jika pembatalan terjadi sebelum pengerjaan dimulai (dalam 24 jam setelah DP), DP dapat dikembalikan penuh.</p>
+          <p>Jika pembatalan terjadi atas inisiatif Cerkas.id (force majeure atau kondisi luar biasa), DP dikembalikan penuh kepada klien.</p>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">06</div>
+        <div class="doc-section-title">Penafian &amp; Batasan Tanggung Jawab</div>
+        <div class="doc-body">
+          <p>Cerkas.id tidak bertanggung jawab atas:</p>
+          <ul>
+            <li>Kerugian bisnis tidak langsung akibat penggunaan layanan kami</li>
+            <li>Downtime layanan pihak ketiga (hosting, domain, platform WhatsApp)</li>
+            <li>Perubahan algoritma platform (Google, Instagram, dll) yang mempengaruhi performa SEO atau konten</li>
+          </ul>
+          <p>Kami berkomitmen memberikan hasil terbaik sesuai brief yang disepakati, namun tidak dapat menjamin target bisnis spesifik (konversi, traffic, sales) sebagai hasil langsung dari layanan kami.</p>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-num">07</div>
+        <div class="doc-section-title">Perubahan Ketentuan</div>
+        <div class="doc-body">
+          <p>Cerkas.id berhak memperbarui syarat dan ketentuan ini sewaktu-waktu. Perubahan signifikan akan diinformasikan kepada klien aktif. Penggunaan layanan setelah perubahan dianggap sebagai penerimaan atas ketentuan baru.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Cerkas.id · Tangkas dalam digital.</span>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/layanan/">Layanan</a>
+        <a href="/kontak/">Kontak</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySel
