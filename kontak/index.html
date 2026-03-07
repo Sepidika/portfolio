@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontak — Cerkas.id</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:     #0A0A0A;
+  --paper:   #F4F1EB;
+  --bara:    #C8522A;
+  --biru:    #2563EB;
+  --biru-lt: #93C5FD;
+  --muted:   #7A7670;
+  --white:   #FFFFFF;
+  --grid:    rgba(0,0,0,0.055);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-icon {
+  width: 32px; height: 32px; background: var(--biru);
+  border-radius: 8px; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0;
+}
+.nav-wordmark {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 700; font-size: 18px;
+  color: #fff; letter-spacing: -0.03em;
+}
+.nav-wordmark em { color: var(--biru-lt); font-style: normal; }
+.nav-links { display: none; gap: 4px; }
+@media(min-width:700px){ .nav-links { display: flex; } }
+.nav-links a {
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none; padding: 7px 14px;
+  border-radius: 6px; transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.nav-links a.active { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-cta {
+  background: var(--biru); color: #fff !important;
+  font-size: 13px; font-weight: 700;
+  padding: 9px 20px; border-radius: 6px;
+  text-decoration: none; transition: opacity 0.2s; white-space: nowrap;
+}
+.nav-cta:hover { opacity: 0.85; }
+.nav-hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+@media(min-width:700px){ .nav-hamburger { display: none; } }
+.nav-hamburger span { width: 22px; height: 2px; background: rgba(255,255,255,0.6); border-radius: 2px; transition: all 0.3s; }
+.nav-mobile-menu {
+  position: fixed; top: 64px; left: 0; right: 0;
+  background: var(--ink); border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 199; display: none; flex-direction: column;
+  padding: 16px 5vw 24px; gap: 4px;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a {
+  font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.6);
+  text-decoration: none; padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.2s;
+}
+.nav-mobile-menu a:hover, .nav-mobile-menu a.active { color: #fff; }
+.nav-mobile-menu a:last-child { border-bottom: none; }
+
+/* ── PAGE ── */
+.page {
+  padding-top: 64px;
+  position: relative; z-index: 1;
+  min-height: 100vh;
+}
+
+/* ── EYEBROW ── */
+.eyebrow {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+}
+.eyebrow::before { content:''; width:20px; height:2px; flex-shrink:0; }
+.eyebrow.light { color: var(--biru-lt); }
+.eyebrow.light::before { background: var(--biru-lt); }
+
+/* ── CONTACT LAYOUT ── */
+.contact-wrap {
+  display: grid; grid-template-columns: 1fr;
+  min-height: calc(100vh - 64px);
+}
+@media(min-width:860px){ .contact-wrap { grid-template-columns: 1fr 1fr; } }
+
+/* LEFT — dark panel */
+.contact-left {
+  background: var(--ink);
+  padding: 64px 5vw;
+  display: flex; flex-direction: column;
+  justify-content: space-between; gap: 48px;
+}
+@media(min-width:860px){ .contact-left { padding: 80px 48px; } }
+
+.cl-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: clamp(40px, 6vw, 72px);
+  letter-spacing: -0.03em; line-height: 0.9;
+  color: #fff; margin-bottom: 20px;
+}
+.cl-title .outline {
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.2); color: transparent;
+}
+.cl-sub {
+  font-size: 15px; color: rgba(255,255,255,0.45);
+  line-height: 1.8; max-width: 380px;
+}
+
+.cl-channels { display: flex; flex-direction: column; gap: 12px; }
+.cl-channel {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 20px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.cl-channel:hover {
+  border-color: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.04);
+}
+.cl-channel-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.cl-channel-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 2px;
+}
+.cl-channel-value {
+  font-family: 'Clash Display', sans-serif; font-weight: 600;
+  font-size: 15px; color: #fff;
+}
+
+.cl-tagline {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: 20px; color: rgba(255,255,255,0.12);
+  letter-spacing: -0.02em; line-height: 1.2;
+}
+
+/* RIGHT — form panel */
+.contact-right {
+  background: var(--paper);
+  padding: 64px 5vw;
+  display: flex; flex-direction: column; justify-content: center;
+}
+@media(min-width:860px){ .contact-right { padding: 80px 48px; } }
+
+.form-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: 28px; letter-spacing: -0.02em; margin-bottom: 32px;
+  color: var(--ink);
+}
+
+.form-group { margin-bottom: 20px; }
+.form-label {
+  display: block; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 8px;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  background: var(--white);
+  border: 1.5px solid rgba(0,0,0,0.1);
+  border-radius: 8px; padding: 14px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--ink); transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none; -webkit-appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--biru);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+}
+.form-textarea { min-height: 120px; resize: vertical; }
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7670' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 16px center;
+  padding-right: 40px; cursor: pointer;
+}
+.form-row { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media(min-width:480px){ .form-row { grid-template-columns: 1fr 1fr; } }
+
+.form-submit {
+  width: 100%; background: var(--ink); color: var(--paper);
+  border: none; border-radius: 8px; padding: 16px 32px;
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 700; font-size: 15px;
+  cursor: pointer; transition: background 0.2s; margin-top: 8px;
+  letter-spacing: -0.01em;
+}
+.form-submit:hover { background: var(--biru); }
+
+.form-note {
+  font-size: 12px; color: var(--muted);
+  text-align: center; margin-top: 14px; line-height: 1.6;
+}
+
+/* Success state */
+.form-success { display: none; text-align: center; padding: 48px 24px; }
+.form-success.show { display: block; }
+.form-success-icon { font-size: 52px; margin-bottom: 16px; }
+.form-success-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: 26px; letter-spacing: -0.02em; margin-bottom: 10px;
+}
+.form-success-sub { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); padding: 48px 5vw 32px;
+  position: relative; z-index: 1;
+}
+.footer-top {
+  display: flex; flex-direction: column; gap: 32px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 28px;
+}
+@media(min-width:640px){
+  .footer-top { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+}
+.footer-brand-name {
+  font-family: 'Clash Display', sans-serif; font-weight: 700;
+  font-size: 22px; color: #fff; letter-spacing: -0.02em; margin-bottom: 8px;
+}
+.footer-brand-name em { color: var(--biru-lt); font-style: normal; }
+.footer-brand-tagline { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-links { display: flex; gap: 48px; flex-wrap: wrap; }
+.footer-col-title {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(255,255,255,0.2); margin-bottom: 14px;
+}
+.footer-col a {
+  display: block; font-size: 13px; color: rgba(255,255,255,0.5);
+  text-decoration: none; margin-bottom: 8px; transition: color 0.2s;
+}
+.footer-col a:hover { color: #fff; }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+.footer-badge {
+  background: var(--biru); color: #fff;
+  font-size: 11px; font-weight: 700;
+  padding: 6px 14px; border-radius: 4px;
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.on { opacity: 1; transform: none; }
+.rd1 { transition-delay: 0.1s; }
+.rd2 { transition-delay: 0.2s; }
+.rd3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-icon">
+      <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+        <path d="M26 9C23.5 6.5 20 5 16 5C9.4 5 4 10.4 4 17C4 23.6 9.4 29 16 29C20 29 23.5 27.5 26 25" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M22 17 L32 17" stroke="#93C5FD" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M28 13 L32 17 L28 21" stroke="#93C5FD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="26" cy="9" r="2" fill="#C8522A"/>
+      </svg>
+    </div>
+    <span class="nav-wordmark">cerkas<em>.id</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/layanan/">Layanan</a>
+    <a href="/portofolio/">Portofolio</a>
+    <a href="/cara-kerja/">Cara Kerja</a>
+    <a href="/harga/">Harga</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="/kontak/" class="nav-cta">Mulai →</a>
+    <div class="nav-hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/layanan/">Layanan</a>
+  <a href="/portofolio/">Portofolio</a>
+  <a href="/cara-kerja/">Cara Kerja</a>
+  <a href="/harga/">Harga</a>
+  <a href="/kontak/" style="color:#fff;">Kontak</a>
+</div>
+
+<div class="page">
+  <div class="contact-wrap">
+
+    <!-- LEFT — dark panel -->
+    <div class="contact-left">
+      <div class="cl-top">
+        <div class="eyebrow light reveal">Hubungi Kami</div>
+        <h1 class="cl-title reveal rd1">
+          Mari<br><span class="outline">ngobrol</span><br>dulu.
+        </h1>
+        <p class="cl-sub reveal rd2">Konsultasi awal gratis. Ceritain kebutuhanmu — kami balas dalam 1×24 jam.</p>
+      </div>
+
+      <div class="cl-channels reveal rd2">
+        <a href="https://wa.me/62" class="cl-channel">
+          <div class="cl-channel-icon" style="background:rgba(37,220,100,0.1);">💬</div>
+          <div>
+            <div class="cl-channel-label">WhatsApp</div>
+            <div class="cl-channel-value">+62 xxx xxxx xxxx</div>
+          </div>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#96fef7faf9d6f5f3e4fdf7e5b8fff2" class="cl-channel">
+          <div class="cl-channel-icon" style="background:rgba(37,99,235,0.15);">✉️</div>
+          <div>
+            <div class="cl-channel-label">Email</div>
+            <div class="cl-channel-value"><span class="__cf_email__" data-cfemail="c9a1a8a5a689aaacbba2a8bae7a0ad">[email&#160;protected]</span></div>
+          </div>
+        </a>
+        <a href="https://instagram.com/cerkas.id" class="cl-channel">
+          <div class="cl-channel-icon" style="background:rgba(200,82,42,0.15);">📸</div>
+          <div>
+            <div class="cl-channel-label">Instagram</div>
+            <div class="cl-channel-value">@cerkas.id</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="cl-bottom reveal rd3">
+        <div class="cl-tagline">Tangkas<br>dalam digital.</div>
+      </div>
+    </div>
+
+    <!-- RIGHT — form -->
+    <div class="contact-right">
+      <div id="formWrap">
+        <h2 class="form-title reveal">Ceritain kebutuhanmu 👋</h2>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group reveal rd1">
+              <label class="form-label">Nama</label>
+              <input type="text" class="form-input" placeholder="Nama kamu" required>
+            </div>
+            <div class="form-group reveal rd2">
+              <label class="form-label">WhatsApp</label>
+              <input type="tel" class="form-input" placeholder="08xx xxxx xxxx" required>
+            </div>
+          </div>
+          <div class="form-group reveal rd1">
+            <label class="form-label">Nama Bisnis / Usaha</label>
+            <input type="text" class="form-input" placeholder="Toko / perusahaan kamu">
+          </div>
+          <div class="form-group reveal rd2">
+            <label class="form-label">Layanan yang dibutuhkan</label>
+            <select class="form-select" required>
+              <option value="" disabled selected>Pilih layanan...</option>
+              <option>Website & Landing Page</option>
+              <option>AI Chatbot</option>
+              <option>Konten & Copywriting</option>
+              <option>Paket Bundling</option>
+              <option>Belum tahu, perlu konsultasi</option>
+            </select>
+          </div>
+          <div class="form-group reveal rd3">
+            <label class="form-label">Budget (opsional)</label>
+            <select class="form-select">
+              <option value="" disabled selected>Estimasi budget...</option>
+              <option>Di bawah Rp 2 jt</option>
+              <option>Rp 2 – 5 jt</option>
+              <option>Rp 5 – 10 jt</option>
+              <option>Di atas Rp 10 jt</option>
+            </select>
+          </div>
+          <div class="form-group reveal rd1">
+            <label class="form-label">Ceritain lebih detail</label>
+            <textarea class="form-textarea" placeholder="Apa yang kamu butuhkan? Semakin detail, semakin baik proposal yang kami siapkan..."></textarea>
+          </div>
+          <button type="submit" class="form-submit reveal rd2">Kirim Pesan →</button>
+          <p class="form-note reveal rd3">Kami balas dalam 1×24 jam via WhatsApp atau email yang kamu cantumkan.</p>
+        </form>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">🎉</div>
+        <div class="form-success-title">Pesan terkirim!</div>
+        <div class="form-success-sub">Makasih sudah menghubungi Cerkas.id.<br>Tim kami akan balas dalam 1×24 jam.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">cerkas<em>.id</em></div>
+        <div class="footer-brand-tagline">Tangkas dalam digital.</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Halaman</div>
+          <a href="/layanan/">Layanan</a>
+          <a href="/portofolio/">Portofolio</a>
+          <a href="/cara-kerja/">Cara Kerja</a>
+          <a href="/harga/">Harga</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Kontak</div>
+          <a href="https://wa.me/62">WhatsApp</a>
+          <a href="https://instagram.com/cerkas.id">Instagram</a>
+          <a href="/cdn-cgi/l/email-protection#8ce4ede0e3ccefe9fee7edffa2e5e8">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Cerkas.id · Tangkas dalam digital.</span>
+      <span class="footer-badge">Made in Indonesia 🇮🇩</span>
+    </div>
+  </footer>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('formWrap').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+});
+
+const obs = new Inte
