@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerkas.id — Tangkas dalam Digital</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:     #0A0A0A;
+  --paper:   #F4F1EB;
+  --bara:    #C8522A;
+  --pijar:   #E8A87C;
+  --biru:    #2563EB;
+  --biru-lt: #93C5FD;
+  --muted:   #7A7670;
+  --white:   #FFFFFF;
+  --grid:    rgba(0,0,0,0.055);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: 64px;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-icon {
+  width: 32px; height: 32px;
+  background: var(--biru);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-wordmark {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 800; font-size: 18px;
+  color: #fff; letter-spacing: -0.03em;
+}
+.nav-wordmark em { color: var(--biru-lt); font-style: normal; }
+.nav-links { display: none; gap: 4px; }
+@media(min-width:700px){ .nav-links { display: flex; } }
+.nav-links a {
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.nav-links a.active { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-cta {
+  background: var(--biru);
+  color: #fff !important;
+  font-size: 13px; font-weight: 700;
+  padding: 9px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.nav-cta:hover { opacity: 0.85; }
+.nav-hamburger {
+  display: flex; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 6px;
+}
+@media(min-width:700px){ .nav-hamburger { display: none; } }
+.nav-hamburger span {
+  width: 22px; height: 2px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 2px; transition: all 0.3s;
+}
+.nav-mobile-menu {
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 199;
+  display: none; flex-direction: column;
+  padding: 16px 5vw 24px; gap: 4px;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a {
+  font-size: 16px; font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: color 0.2s;
+}
+.nav-mobile-menu a:hover, .nav-mobile-menu a.active { color: #fff; }
+.nav-mobile-menu a:last-child { border-bottom: none; }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--biru);
+  overflow: hidden; padding: 12px 0;
+  position: relative; z-index: 1;
+}
+.ticker-track {
+  display: flex; white-space: nowrap;
+  animation: scroll 28s linear infinite;
+}
+.ticker-item {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 700; font-size: 12px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fff; padding: 0 32px;
+}
+.ticker-sep { color: rgba(255,255,255,0.35); }
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── EYEBROW ── */
+.eyebrow {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--bara);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.eyebrow::before { content:''; width:20px; height:2px; background:var(--bara); flex-shrink:0; }
+.eyebrow.blue { color: var(--biru); }
+.eyebrow.blue::before { background: var(--biru); }
+.eyebrow.light { color: var(--biru-lt); }
+.eyebrow.light::before { background: var(--biru-lt); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 800; font-size: 14px;
+  padding: 14px 28px; border-radius: 6px;
+  text-decoration: none; transition: all 0.2s;
+  cursor: pointer; border: none;
+}
+.btn-dark { background: var(--ink); color: var(--paper); }
+.btn-dark:hover { background: var(--biru); color: #fff; }
+.btn-blue { background: var(--biru); color: #fff; }
+.btn-blue:hover { opacity: 0.85; }
+.btn-outline {
+  background: transparent; color: var(--muted);
+  border: 1.5px solid rgba(0,0,0,0.12);
+}
+.btn-outline:hover { border-color: var(--biru); color: var(--ink); }
+.btn-outline-white {
+  background: transparent; color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 48px 5vw 32px;
+  position: relative; z-index: 1;
+}
+.footer-top {
+  display: flex; flex-direction: column; gap: 32px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 28px;
+}
+@media(min-width:640px){
+  .footer-top { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+}
+.footer-brand-name {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 22px; color: #fff; letter-spacing: -0.03em; margin-bottom: 8px;
+}
+.footer-brand-name em { color: var(--biru-lt); font-style: normal; }
+.footer-brand-tagline { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-links { display: flex; gap: 48px; flex-wrap: wrap; }
+.footer-col-title {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2); margin-bottom: 14px;
+}
+.footer-col a {
+  display: block; font-size: 13px;
+  color: rgba(255,255,255,0.5); text-decoration: none;
+  margin-bottom: 8px; transition: color 0.2s;
+}
+.footer-col a:hover { color: #fff; }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+.footer-badge {
+  background: var(--biru); color: #fff;
+  font-size: 11px; font-weight: 700;
+  padding: 6px 14px; border-radius: 4px;
+}
+
+/* ── REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.on { opacity: 1; transform: none; }
+.rd1 { transition-delay: 0.1s; }
+.rd2 { transition-delay: 0.2s; }
+.rd3 { transition-delay: 0.3s; }
+
+/* ── PAGE WRAPPER ── */
+.page {
+  padding-top: 64px;
+  position: relative; z-index: 1;
+  min-height: calc(100vh - 64px);
+}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero {
+  min-height: calc(100vh - 64px);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding: 80px 5vw 80px;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+@media(min-width:900px){
+  .hero { grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+}
+
+.hero-left { position: relative; z-index: 2; }
+
+.hero-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: clamp(52px, 9vw, 100px);
+  letter-spacing: -0.04em; line-height: 0.9;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.hero-title .outline {
+  -webkit-text-stroke: 2.5px var(--ink); color: transparent;
+}
+.hero-title .accent {
+  color: var(--biru);
+}
+
+.hero-desc {
+  font-size: 16px; line-height: 1.75;
+  color: var(--muted); max-width: 480px;
+  margin-bottom: 40px; font-weight: 500;
+}
+.hero-desc strong { color: var(--ink); font-weight: 800; }
+
+.hero-actions {
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+}
+
+.hero-stat-row {
+  display: flex; gap: 40px; margin-top: 52px;
+  padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.08);
+  flex-wrap: wrap;
+}
+.hero-stat-val {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 32px; letter-spacing: -0.03em; color: var(--ink);
+  line-height: 1;
+}
+.hero-stat-lbl {
+  font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 600;
+}
+
+/* Hero right — visual card stack */
+.hero-right {
+  display: none;
+  position: relative;
+}
+@media(min-width:900px){ .hero-right { display: block; } }
+
+.hero-card-main {
+  background: var(--ink);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative; z-index: 2;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+}
+.hero-card-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 5px 12px;
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-card-chip-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #22c55e;
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+.hero-card-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 26px; color: #fff; letter-spacing: -0.03em;
+  margin-bottom: 6px;
+}
+.hero-card-sub { font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 28px; }
+
+.hero-svc-list { display: flex; flex-direction: column; gap: 12px; }
+.hero-svc-item {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 14px 16px;
+  transition: background 0.2s;
+}
+.hero-svc-item:hover { background: rgba(255,255,255,0.08); }
+.hero-svc-icon { font-size: 20px; margin-right: 12px; }
+.hero-svc-name { font-size: 14px; font-weight: 700; color: #fff; }
+.hero-svc-price {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 15px; color: var(--biru-lt);
+}
+
+.hero-card-float {
+  position: absolute;
+  bottom: -24px; right: -24px;
+  background: var(--biru);
+  border-radius: 12px; padding: 20px 24px;
+  z-index: 3; box-shadow: 0 12px 32px rgba(37,99,235,0.35);
+}
+.hero-card-float-val {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 28px; color: #fff; line-height: 1;
+}
+.hero-card-float-lbl { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 3px; font-weight: 600; }
+
+/* ══════════════════════════════════════
+   SERVICES SECTION
+══════════════════════════════════════ */
+.section {
+  padding: 80px 5vw;
+  position: relative; z-index: 1;
+}
+.section + .section { border-top: 1px solid rgba(0,0,0,0.06); }
+
+.section-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 48px; flex-wrap: wrap; gap: 16px;
+}
+.section-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing: -0.04em; line-height: 0.9;
+  color: var(--ink);
+}
+.section-title .outline {
+  -webkit-text-stroke: 2px var(--ink); color: transparent;
+}
+
+/* services list */
+.svc-list { display: flex; flex-direction: column; }
+.svc-row {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 24px; align-items: center;
+  padding: 24px 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  text-decoration: none; color: inherit;
+  transition: background 0.2s;
+}
+.svc-row:last-child { border-bottom: 1px solid rgba(0,0,0,0.06); }
+.svc-row:hover { background: rgba(37,99,235,0.03); margin: 0 -24px; padding-left: 24px; padding-right: 24px; }
+@media(max-width:600px){ .svc-row { grid-template-columns: 40px 1fr; gap: 14px; } }
+.svc-num {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 12px; color: var(--muted); letter-spacing: 0.1em;
+}
+.svc-name {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: clamp(20px, 3vw, 32px);
+  letter-spacing: -0.02em; color: var(--ink); margin-bottom: 4px;
+  transition: color 0.2s;
+}
+.svc-row:hover .svc-name { color: var(--biru); }
+.svc-desc { font-size: 13px; color: var(--muted); font-weight: 500; }
+.svc-right {
+  display: flex; align-items: center; gap: 20px;
+}
+@media(max-width:600px){ .svc-right { display: none; } }
+.svc-price {
+  text-align: right;
+  font-size: 12px; color: var(--muted);
+}
+.svc-price strong {
+  display: block; font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 20px; color: var(--ink); letter-spacing: -0.02em;
+}
+.svc-arr {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(0,0,0,0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--muted);
+  transition: all 0.2s;
+}
+.svc-row:hover .svc-arr { background: var(--biru); color: #fff; transform: rotate(-45deg); }
+
+/* ══════════════════════════════════════
+   HOW IT WORKS
+══════════════════════════════════════ */
+.steps-section { background: var(--white); border-top: 1px solid rgba(0,0,0,0.06); }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px; margin-top: 48px;
+}
+@media(min-width:600px){ .steps-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(min-width:900px){ .steps-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.step-card {
+  background: var(--paper);
+  padding: 36px 32px;
+  position: relative; overflow: hidden;
+  transition: background 0.2s;
+}
+.step-card:hover { background: #eeeae2; }
+.step-card::after {
+  content: attr(data-n);
+  position: absolute; bottom: -16px; right: 12px;
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 96px; color: rgba(0,0,0,0.04);
+  line-height: 1; pointer-events: none;
+  letter-spacing: -0.04em;
+}
+.step-num {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--biru); margin-bottom: 20px;
+}
+.step-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 20px; letter-spacing: -0.02em; color: var(--ink);
+  margin-bottom: 10px;
+}
+.step-desc { font-size: 13px; color: var(--muted); line-height: 1.7; font-weight: 500; }
+.step-dur {
+  margin-top: 20px; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; color: var(--muted);
+  background: rgba(0,0,0,0.05); padding: 5px 10px; border-radius: 4px;
+}
+
+/* ══════════════════════════════════════
+   PRICING PREVIEW
+══════════════════════════════════════ */
+.pricing-section { background: var(--paper); }
+
+.p-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 16px; margin-top: 48px;
+}
+@media(min-width:700px){ .p-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.p-card {
+  background: var(--white);
+  border: 1.5px solid rgba(0,0,0,0.07);
+  border-radius: 12px; padding: 32px;
+  display: flex; flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.p-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+.p-card.featured {
+  background: var(--biru);
+  border-color: var(--biru);
+}
+.p-card.featured:hover { box-shadow: 0 16px 40px rgba(37,99,235,0.3); }
+.p-card.featured .p-name,
+.p-card.featured .p-price,
+.p-card.featured .p-fi { color: #fff; }
+.p-card.featured .p-label,
+.p-card.featured .p-per { color: rgba(255,255,255,0.55); }
+.p-card.featured .p-div { background: rgba(255,255,255,0.15); }
+.p-card.featured .p-tag { color: rgba(255,255,255,0.55); }
+.p-card.featured .p-btn { background: #fff; color: var(--biru); border: none; }
+.p-card.featured .p-btn:hover { opacity: 0.9; }
+
+.p-tag {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.p-tag-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--biru); }
+.p-card.featured .p-tag-dot { background: rgba(255,255,255,0.5); }
+.p-name {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 26px; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 4px;
+}
+.p-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+.p-div { height: 1px; background: rgba(0,0,0,0.07); margin: 24px 0; }
+.p-price {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 44px; letter-spacing: -0.04em; color: var(--ink);
+  line-height: 1; margin-bottom: 4px;
+}
+.p-per { font-size: 12px; color: var(--muted); font-weight: 600; }
+.p-feats { flex: 1; margin: 24px 0; display: flex; flex-direction: column; gap: 10px; }
+.p-fi {
+  font-size: 13px; color: var(--ink); font-weight: 600;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.p-fi::before { content: '—'; color: var(--biru); flex-shrink: 0; font-weight: 800; }
+.p-card.featured .p-fi::before { color: var(--biru-lt); }
+.p-btn {
+  display: block; text-align: center;
+  background: var(--ink); color: var(--paper);
+  font-weight: 800; font-size: 13px;
+  padding: 14px; border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+}
+.p-btn:hover { opacity: 0.85; }
+
+/* ══════════════════════════════════════
+   CTA BAND
+══════════════════════════════════════ */
+.cta-band {
+  background: var(--ink);
+  padding: 80px 5vw;
+  text-align: center;
+  position: relative; z-index: 1; overflow: hidden;
+}
+.cta-band::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.cta-inner { position: relative; z-index: 1; }
+.cta-title {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: clamp(36px, 7vw, 80px);
+  letter-spacing: -0.04em; line-height: 0.9;
+  color: #fff; margin-bottom: 20px;
+}
+.cta-title .outline {
+  -webkit-text-stroke: 2px rgba(255,255,255,0.3); color: transparent;
+}
+.cta-title .accent { color: var(--biru-lt); }
+.cta-sub {
+  font-size: 16px; color: rgba(255,255,255,0.45);
+  max-width: 440px; margin: 0 auto 40px;
+  line-height: 1.7; font-weight: 500;
+}
+.cta-acts { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ══════════════════════════════════════
+   LOGO MARQUEE
+══════════════════════════════════════ */
+.trust-band {
+  padding: 40px 5vw;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  position: relative; z-index: 1;
+  overflow: hidden;
+}
+.trust-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--muted); text-align: center; margin-bottom: 28px;
+}
+.trust-items {
+  display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+  align-items: center;
+}
+.trust-item {
+  font-family: 'Clash Display', sans-serif; font-weight: 800;
+  font-size: 14px; letter-spacing: -0.02em;
+  color: rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-icon">
+      <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+        <path d="M26 9C23.5 6.5 20 5 16 5C9.4 5 4 10.4 4 17C4 23.6 9.4 29 16 29C20 29 23.5 27.5 26 25" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M22 17 L32 17" stroke="#93C5FD" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M28 13 L32 17 L28 21" stroke="#93C5FD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="26" cy="9" r="2" fill="#C8522A"/>
+      </svg>
+    </div>
+    <span class="nav-wordmark">cerkas<em>.id</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="active" data-page="home">Home</a>
+    <a href="layanan.html" data-page="layanan">Layanan</a>
+    <a href="portofolio.html" data-page="portofolio">Portofolio</a>
+    <a href="cara-kerja.html" data-page="cara-kerja">Cara Kerja</a>
+    <a href="harga.html" data-page="harga">Harga</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="kontak.html" class="nav-cta">Mulai →</a>
+    <div class="nav-hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="index.html" data-page="home">Home</a>
+  <a href="layanan.html" data-page="layanan">Layanan</a>
+  <a href="portofolio.html" data-page="portofolio">Portofolio</a>
+  <a href="cara-kerja.html" data-page="cara-kerja">Cara Kerja</a>
+  <a href="harga.html" data-page="harga">Harga</a>
+  <a href="kontak.html" data-page="kontak">Kontak</a>
+</div>
+
+<div class="page">
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="eyebrow reveal">Digital Product Studio · Indonesia 🇮🇩</div>
+      <h1 class="hero-title reveal">
+        Cerkas<br>
+        <span class="outline">dalam</span><br>
+        <span class="accent">Digital.</span>
+      </h1>
+      <p class="hero-desc reveal">
+        Kami bantu bisnis lokal Indonesia <strong>tampil profesional</strong> — dari website, AI chatbot, sampai konten yang tepat sasaran.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="layanan.html" class="btn btn-blue">Lihat Layanan →</a>
+        <a href="cara-kerja.html" class="btn btn-outline">Cara Kerja</a>
+      </div>
+      <div class="hero-stat-row reveal">
+        <div>
+          <div class="hero-stat-val">30+</div>
+          <div class="hero-stat-lbl">Klien aktif</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">3</div>
+          <div class="hero-stat-lbl">Layanan utama</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">24 jam</div>
+          <div class="hero-stat-lbl">Respon konsultasi</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right reveal">
+      <div class="hero-card-main">
+        <div class="hero-card-chip">
+          <div class="hero-card-chip-dot"></div>
+          Layanan Aktif
+        </div>
+        <div class="hero-card-title">Apa yang kami buat?</div>
+        <div class="hero-card-sub">Pilih sesuai kebutuhan bisnismu</div>
+        <div class="hero-svc-list">
+          <div class="hero-svc-item">
+            <div style="display:flex;align-items:center;">
+              <span class="hero-svc-icon">🌐</span>
+              <span class="hero-svc-name">Website & Landing Page</span>
+            </div>
+            <span class="hero-svc-price">Rp 1,5 jt</span>
+          </div>
+          <div class="hero-svc-item">
+            <div style="display:flex;align-items:center;">
+              <span class="hero-svc-icon">🤖</span>
+              <span class="hero-svc-name">AI Chatbot</span>
+            </div>
+            <span class="hero-svc-price">Rp 2 jt</span>
+          </div>
+          <div class="hero-svc-item">
+            <div style="display:flex;align-items:center;">
+              <span class="hero-svc-icon">✍️</span>
+              <span class="hero-svc-name">Konten & Copywriting</span>
+            </div>
+            <span class="hero-svc-price">Rp 750 rb</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card-float">
+        <div class="hero-card-float-val">+22%</div>
+        <div class="hero-card-float-lbl">hemat paket bundle</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">Website <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">AI Chatbot <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">Copywriting <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">Landing Page <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">Konten Digital <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">Branding <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">Website <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">AI Chatbot <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">Copywriting <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">Landing Page <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">Konten Digital <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">Branding <span class="ticker-sep">✦</span></span>
+    </div>
+  </div>
+
+  <!-- ══ SERVICES ══ -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div>
+        <div class="eyebrow blue">Layanan</div>
+        <h2 class="section-title">Apa yang<br><span class="outline">kami buat</span></h2>
+      </div>
+      <a href="layanan.html" class="btn btn-outline">Lihat semua →</a>
+    </div>
+    <div class="svc-list">
+      <a href="layanan.html#website" class="svc-row reveal rd1">
+        <span class="svc-num">01</span>
+        <div>
+          <div class="svc-name">Website & Landing Page</div>
+          <div class="svc-desc">Tampilan profesional yang convert — mobile-first, cepat, siap pakai</div>
+        </div>
+        <div class="svc-right">
+          <div class="svc-price"><strong>Rp 1,5 jt</strong>mulai dari</div>
+          <div class="svc-arr">→</div>
+        </div>
+      </a>
+      <a href="layanan.html#chatbot" class="svc-row reveal rd2">
+        <span class="svc-num">02</span>
+        <div>
+          <div class="svc-name">AI Chatbot</div>
+          <div class="svc-desc">Layani pelanggan 24/7 — integrasi WhatsApp & website</div>
+        </div>
+        <div class="svc-right">
+          <div class="svc-price"><strong>Rp 2 jt</strong>mulai dari</div>
+          <div class="svc-arr">→</div>
+        </div>
+      </a>
+      <a href="layanan.html#konten" class="svc-row reveal rd3">
+        <span class="svc-num">03</span>
+        <div>
+          <div class="svc-name">Konten & Copywriting</div>
+          <div class="svc-desc">Kata-kata yang ngomong ke audiens dengan tepat</div>
+        </div>
+        <div class="svc-right">
+          <div class="svc-price"><strong>Rp 750 rb</strong>mulai dari</div>
+          <div class="svc-arr">→</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ HOW IT WORKS ══ -->
+  <section class="section steps-section">
+    <div class="section-header reveal">
+      <div>
+        <div class="eyebrow blue">Cara Kerja</div>
+        <h2 class="section-title">4 langkah<br><span class="outline">simpel</span></h2>
+      </div>
+      <a href="cara-kerja.html" class="btn btn-outline">Detail proses →</a>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal rd1" data-n="01">
+        <div class="step-num">// 01</div>
+        <div class="step-title">Konsultasi</div>
+        <div class="step-desc">Ngobrol dulu, ceritain kebutuhan bisnismu. Gratis, tanpa komitmen.</div>
+        <div class="step-dur">⏱ 1–2 hari</div>
+      </div>
+      <div class="step-card reveal rd2" data-n="02">
+        <div class="step-num">// 02</div>
+        <div class="step-title">Proposal & Desain</div>
+        <div class="step-desc">Mockup desain awal dikirim. Revisi sampai kamu puas sebelum produksi.</div>
+        <div class="step-dur">⏱ 2–5 hari kerja</div>
+      </div>
+      <div class="step-card reveal rd1" data-n="03">
+        <div class="step-num">// 03</div>
+        <div class="step-title">Produksi</div>
+        <div class="step-desc">Update harian via WA. Preview sebelum final. QA di semua device.</div>
+        <div class="step-dur">⏱ 5–14 hari kerja</div>
+      </div>
+      <div class="step-card reveal rd2" data-n="04">
+        <div class="step-num">// 04</div>
+        <div class="step-title">Launch & Support</div>
+        <div class="step-desc">Produk live. Serah terima semua akses. Support 30 hari after launch.</div>
+        <div class="step-dur">⏱ 30 hari support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRICING ══ -->
+  <section class="section pricing-section">
+    <div class="section-header reveal">
+      <div>
+        <div class="eyebrow blue">Harga</div>
+        <h2 class="section-title">Transparan,<br><span class="outline">no hidden cost</span></h2>
+      </div>
+      <a href="harga.html" class="btn btn-outline">Semua paket →</a>
+    </div>
+    <div class="p-grid">
+      <div class="p-card reveal rd1">
+        <div class="p-tag"><span class="p-tag-dot"></span>Starter</div>
+        <div class="p-name">Launch</div>
+        <div class="p-label">Website + Copy Starter</div>
+        <div class="p-div"></div>
+        <div class="p-price">1,9 jt</div>
+        <div class="p-per">/ bundle</div>
+        <div class="p-feats">
+          <div class="p-fi">Landing page 1 halaman</div>
+          <div class="p-fi">5 caption Instagram</div>
+          <div class="p-fi">Domain .id included</div>
+          <div class="p-fi">Mobile-friendly</div>
+        </div>
+        <a href="kontak.html" class="p-btn">Pilih Paket →</a>
+      </div>
+      <div class="p-card featured reveal rd2">
+        <div class="p-tag"><span class="p-tag-dot"></span>⭐ Populer</div>
+        <div class="p-name">Grow</div>
+        <div class="p-label">Website Pro + Bot + Copy Pro</div>
+        <div class="p-div"></div>
+        <div class="p-price">8,5 jt</div>
+        <div class="p-per">/ bundle · hemat 22%</div>
+        <div class="p-feats">
+          <div class="p-fi">Website 5 halaman + CMS</div>
+          <div class="p-fi">AI Chatbot WhatsApp</div>
+          <div class="p-fi">15 konten/bulan</div>
+          <div class="p-fi">Support 30 hari</div>
+        </div>
+        <a href="kontak.html" class="p-btn">Pilih Paket →</a>
+      </div>
+      <div class="p-card reveal rd3">
+        <div class="p-tag"><span class="p-tag-dot"></span>Business</div>
+        <div class="p-name">Full</div>
+        <div class="p-label">Website + Bot Pro + Copy Business</div>
+        <div class="p-div"></div>
+        <div class="p-price">17 jt</div>
+        <div class="p-per">/ bundle · hemat 22%</div>
+        <div class="p-feats">
+          <div class="p-fi">Website custom unlimited</div>
+          <div class="p-fi">Bot multi-platform</div>
+          <div class="p-fi">30 konten + strategi</div>
+          <div class="p-fi">Priority support</div>
+        </div>
+        <a href="kontak.html" class="p-btn">Konsultasi →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TRUST LOGOS ══ -->
+  <div class="trust-band reveal">
+    <div class="trust-label">Dipercaya bisnis dari berbagai industri</div>
+    <div class="trust-items">
+      <div class="trust-item">Toko Batik Nusantara</div>
+      <div class="trust-item">Klinik Sehat Bersama</div>
+      <div class="trust-item">Arif Konsultan Pro</div>
+      <div class="trust-item">Bot CS Fashion</div>
+      <div class="trust-item">Herbal Store</div>
+      <div class="trust-item">Kafe Kopi Lokal</div>
+    </div>
+  </div>
+
+  <!-- ══ CTA ══ -->
+  <div class="cta-band">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">
+        Siap<br>
+        <span class="outline">bergerak</span><br>
+        <span class="accent">tangkas?</span>
+      </h2>
+      <p class="cta-sub">Konsultasi awal gratis. Ceritain kebutuhanmu — kami respon dalam 1×24 jam.</p>
+      <div class="cta-acts">
+        <a href="kontak.html" class="btn btn-blue" style="font-size:15px;padding:16px 36px;">💬 Mulai Konsultasi</a>
+        <a href="harga.html" class="btn btn-outline-white" style="font-size:15px;padding:16px 28px;">Lihat Harga →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">cerkas<em>.id</em></div>
+        <div class="footer-brand-tagline">Tangkas dalam digital.</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Halaman</div>
+          <a href="layanan.html">Layanan</a>
+          <a href="portofolio.html">Portofolio</a>
+          <a href="cara-kerja.html">Cara Kerja</a>
+          <a href="harga.html">Harga</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Kontak</div>
+          <a href="#">WhatsApp</a>
+          <a href="#">Instagram</a>
+          <a href="kontak.html">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Cerkas.id · Tangkas dalam digital.</span>
+      <span class="footer-badge">Made in Indonesia 🇮🇩</span>
+    </div>
+  </footer>
+
+</div><!-- .page -->
+
+<script>
+// Mobile nav
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+
+// Reveal on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('on'), i * 60);
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
